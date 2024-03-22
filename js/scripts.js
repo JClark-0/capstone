@@ -32,11 +32,16 @@ navigator.geolocation.getCurrentPosition((position) => {
     timeZone.innerHTML = formattedTimezone;
 
     //Pollen count
-    let grassPollen = document.getElementById('grass_pollen');
-    grassPollen.innerHTML = data.data[0].Count.grass_pollen;
+    // let grassPollen = document.getElementById('grass_pollen');
+    // grassPollen.innerHTML = data.data[0].Count.grass_pollen;
 
-    let treePollen = document.getElementById('tree_pollen');
-    treePollen.innerHTML = data.data[0].Count.tree_pollen;
+    // let treePollen = document.getElementById('tree_pollen');
+    // treePollen.innerHTML = data.data[0].Count.tree_pollen;
+
+    let treePollen = data.data[0].Count.tree_pollen;
+    for (let i = 0; i < treePollen; i++) {
+    console.log(i);
+    }
 
     let weedPollen = document.getElementById('weed_pollen');
     weedPollen.innerHTML = data.data[0].Count.weed_pollen;
