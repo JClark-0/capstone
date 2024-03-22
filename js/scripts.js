@@ -39,8 +39,13 @@ navigator.geolocation.getCurrentPosition((position) => {
     // treePollen.innerHTML = data.data[0].Count.tree_pollen;
 
     let treePollen = data.data[0].Count.tree_pollen;
-    for (let i = 0; i < treePollen; i++) {
-    console.log(i);
+    let sporeCount = document.getElementById('spore_count');
+
+    for (let i = 0; i < treePollen + 1; i++) {
+      console.log(i);
+      let circle = document.createElement('div');
+      circle.classList.add('spore');
+      sporeCount.appendChild(circle);
     }
 
     let weedPollen = document.getElementById('weed_pollen');
