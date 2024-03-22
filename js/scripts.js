@@ -25,7 +25,8 @@ navigator.geolocation.getCurrentPosition((position) => {
   .then((data) => { // Lets do stuff with the data now
      
     let timeZone = document.getElementById('timezone');
-    timeZone.innerHTML = data.data[0].timezone;
+    let formattedTimezone = data.data[0].timezone.replace(/_/g, ' ').replace(/[\/]/g, '<br>');
+    timeZone.innerHTML = formattedTimezone;
     console.log(data); // Just to see what is goign on
   })
     
