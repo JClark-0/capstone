@@ -1,6 +1,20 @@
 
 
 
+
+
+// ${lng}
+
+// Getting your lat and lng based on location
+navigator.geolocation.getCurrentPosition((position) => {
+
+  let lat =(position.coords.latitude);
+  let lng = (position.coords.longitude);
+
+  console.log(lat,lng);
+});
+
+
 const url = 'https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=12.9889055&lng=77.574044';
 let options = {
   method: 'GET',
@@ -12,7 +26,7 @@ let options = {
 fetch(url, options)
 
   .then((response) => response.json()) // Return it as JSON data
-  .then((data) => { // Do stuff with the data
+  .then((data) => { // Lets do stuff with the data now
 
     console.log(data);
      
