@@ -15,22 +15,33 @@
 
 	<body>
 
-		<header></header>
-		<section>
-			<h1>Pollen</h1>
-			<h2>Today in </h2><p id="timezone"></p>
-		</section>
+		<header>
+			<h1>Pollen Tracking...</h1>
+			<h2>Today in <span id="timezone"></span></h2>
+		</header>
+		<main>
 
-		<section>
-			<h2>Grass: </h2><p id="grass_pollen"></p>
-			<h2>Risk: </h2><p id="grass_risk"></p>
-			<h2>Tree: </h2><p id="tree_pollen"></p>
-			<h2>Risk: </h2><p id="tree_risk"></p>
-			<h2>Weed: </h2><p id="weed_pollen"></p>
-			<h2>Risk: </h2><p id="weed_risk"></p>
-		</section>
+			<section>
+				<div>
+					<h2>Grass Pollen: <span id="grass_pollen"></span></h2>
+					<h2>Risk: <span id="grass_risk"></span></h2>
+				</div>
 
-		<div id="spore_count" class="spore"></div>
+				<div>
+					<h2>Tree Pollen: <span id="tree_pollen"></span></h2>
+					<h2>Risk: <span id="tree_risk"></span></h2>
+				</div>
+				
+				<div id="spore_count" class="spore_view"></div>
+
+				<div>
+					<h2>Weed Pollen: <span id="weed_pollen"></span></h2>
+					<h2>Risk: <span id="weed_risk"></span></h2>
+				</div>
+			</section>
+		</main>
+
+
 
 
 		<!-- script always before closing body tag -->

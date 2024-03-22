@@ -1,8 +1,33 @@
 
+:root {
+    --font-family: monospace;
+    --font-size: 16px;
+    --gutters: 10px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+
+header {
+    margin-top: var(--gutters);
+    margin-bottom: var(--gutters);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gutters);
+}
+
+.spore_view {
+    display: flex;
+    flex-wrap: wrap;
+}
 .spore {
     height: 25px;
     width: 25px;
-    background-color: #bbb;
+    background-color: #43c156;
     border-radius: 50%;
-    display: inline-block;
 }

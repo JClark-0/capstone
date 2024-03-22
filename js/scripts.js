@@ -28,21 +28,20 @@ navigator.geolocation.getCurrentPosition((position) => {
 
     // Location
     let timeZone = document.getElementById('timezone');
-    let formattedTimezone = data.data[0].timezone.replace(/_/g, ' ').replace(/[\/]/g, '<br>');
+    let formattedTimezone = data.data[0].timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
     timeZone.innerHTML = formattedTimezone;
 
     //Pollen count
-    // let grassPollen = document.getElementById('grass_pollen');
-    // grassPollen.innerHTML = data.data[0].Count.grass_pollen;
+    let grassPollen = document.getElementById('grass_pollen');
+    grassPollen.innerHTML = data.data[0].Count.grass_pollen;
 
-    // let treePollen = document.getElementById('tree_pollen');
-    // treePollen.innerHTML = data.data[0].Count.tree_pollen;
+    let treePollen = document.getElementById('tree_pollen');
+    treePollen.innerHTML = data.data[0].Count.tree_pollen;
 
-    let treePollen = data.data[0].Count.tree_pollen;
+    let treeSpores = data.data[0].Count.tree_pollen;
     let sporeCount = document.getElementById('spore_count');
 
-    for (let i = 0; i < treePollen + 1; i++) {
-      console.log(i);
+    for (let i = 0; i < treeSpores + 1; i++) {
       let circle = document.createElement('div');
       circle.classList.add('spore');
       sporeCount.appendChild(circle);
