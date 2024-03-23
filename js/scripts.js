@@ -8,7 +8,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   // console.log(lat);
   // console.log(lng);
 
-  // let url = 'https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=12.9889055&lng=77.574044';
+  // let url = 'https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=110.9889055&lng=50.574044';
   let url = `https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=${lat}&lng=${lng}`;
   let options = {
     method: 'GET',
@@ -31,24 +31,45 @@ navigator.geolocation.getCurrentPosition((position) => {
     let formattedTimezone = data.data[0].timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
     timeZone.innerHTML = formattedTimezone;
 
-    //Pollen count
+    //Grass Pollen
     let grassPollen = document.getElementById('grass_pollen');
     grassPollen.innerHTML = data.data[0].Count.grass_pollen;
 
+    let grassSpores = data.data[0].Count.grass_pollen;
+    let grassCount = document.getElementById('grass_count');
+
+    for (let i = 0; i < grassSpores; i++) {
+      let circle = document.createElement('div');
+      circle.classList.add('spore', 'grass');
+      grassCount.appendChild(circle);
+    }
+
+    //Tree Pollen
     let treePollen = document.getElementById('tree_pollen');
     treePollen.innerHTML = data.data[0].Count.tree_pollen;
 
     let treeSpores = data.data[0].Count.tree_pollen;
-    let sporeCount = document.getElementById('spore_count');
+    let treeCount = document.getElementById('tree_count');
 
-    for (let i = 0; i < treeSpores + 1; i++) {
+    for (let i = 0; i < treeSpores; i++) {
       let circle = document.createElement('div');
-      circle.classList.add('spore');
-      sporeCount.appendChild(circle);
+      circle.classList.add('spore', 'tree');
+      treeCount.appendChild(circle);
     }
 
+    //Weed Pollen
     let weedPollen = document.getElementById('weed_pollen');
     weedPollen.innerHTML = data.data[0].Count.weed_pollen;
+
+    let weedSpores = data.data[0].Count.weed_pollen;
+    let weedCount = document.getElementById('weed_count');
+
+    for (let i = 0; i < weedSpores; i++) {
+      let circle = document.createElement('div');
+      circle.classList.add('spore', 'weed');
+      weedCount.appendChild(circle);
+    }
+
 
     //Allergy Risk
     let grassRisk = document.getElementById('grass_risk');

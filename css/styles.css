@@ -28,6 +28,17 @@ section {
 .spore {
     height: 25px;
     width: 25px;
-    background-color: #43c156;
     border-radius: 50%;
+}
+
+.grass {
+    background-color: #044c01;
+}
+
+.tree {
+    background-color: #43c156;
+}
+
+.weed {
+    background-color: #3be46b;
 }
