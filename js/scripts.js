@@ -8,8 +8,9 @@ navigator.geolocation.getCurrentPosition((position) => {
   // console.log(lat);
   // console.log(lng);
 
+  // let urlWind 'https://api.ambeedata.com/weather/latest/by-lat-lng?lat=12&lng=77';
   // let url = 'https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=110.9889055&lng=50.574044';
-  let url = `https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=${lat}&lng=${lng}`;
+  let urlPollen = `https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=${lat}&lng=${lng}`;
   let options = {
     method: 'GET',
     headers: {
@@ -19,7 +20,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   };
 
   
-  fetch(url, options)
+  fetch(urlPollen, options)
   .then((response) => response.json()) // Return it as JSON data
   .then((data) => { // Lets do stuff with the data now
      
