@@ -55,6 +55,14 @@ navigator.geolocation.getCurrentPosition((position) => {
     for (let i = 0; i < treeSpores; i++) {
       let circle = document.createElement('div');
       circle.classList.add('spore', 'tree');
+      // circle.style.left = Math.random() * window.innerWidth + 'px';
+      // circle.style.top = Math.random() * window.innerHeight + 'px';
+
+      // let directionX = Math.random(); 
+      // let directionY = Math.random(); 
+
+      circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+      // circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
       treeCount.appendChild(circle);
     }
 
