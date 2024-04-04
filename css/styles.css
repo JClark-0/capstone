@@ -1,10 +1,24 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
 :root {
     --font-family: monospace;
+    --display-font: "Space Grotesk", sans-serif;
+    --font-color: white;
     --font-size: 16px;
+    --display-size: 36px;
     --gutters: 10px;
 
-    --bg-color: rgb(252, 253, 241); 
+
+
+    /* grass colors */
+    --grass-bg: rgb(167, 221, 75); 
+    --grass-spore: #3d5b06bd;
+
+    /* tree colors */
+    --tree-bg: rgb(30, 21, 18); 
+    --tree-spore: #bcf35dbd;
 
     --spore-size:35px;
 }
@@ -12,7 +26,25 @@
 body {
     font-family: var(--font-family);
     font-size: var(--font-size);
-    background-color: var(--bg-color);
+    color: var(--font-color);
+    background-color: var(--tree-bg);
+    margin-left: var(--gutters);
+    margin-left: var(--gutters);
+    margin-right: var(--gutters);
+
+}
+
+.nav_bar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: var(--gutters);
+    margin-bottom: var(--gutters);
+}
+
+.btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 header {
@@ -20,11 +52,20 @@ header {
     margin-bottom: var(--gutters);
 }
 
+h1 {
+    font-family: var(--display-font);
+    font-size: var(--display-size);
+    font-weight: 500;
+}
+
 section {
     display: flex;
-    flex-direction: column;
-    row-gap: var(--gutters);
+    flex-direction: row;
+    column-gap: calc(var(--gutters)* 4);
+    margin-top:calc(var(--gutters)* 4);
+    margin-bottom: var(--gutters);
 }
+
 
 .spore_view {
     display: flex;
@@ -38,15 +79,20 @@ section {
 }
 
 .grass {
-    background-color: #044c01;
+    background-color: var(--grass-spore);
 }
 
 .tree {
-    background-color: #43c156;
+    background-color: var(--tree-spore);
 }
 
 .weed {
     background-color: #3be46b;
+}
+
+button {
+    background: darkgreen;
+    color: white;
 }
 
 @keyframes moveSpore {

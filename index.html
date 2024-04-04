@@ -9,14 +9,20 @@
 		<title>Capstone Project</title>
 		<meta name="description" content="Type & Interaction capstone project">
 		<meta name="author" content="JC Clark">
+
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/reset.css">
 	</head>
 
 	<body>
-
+		<nav>
+			<ol class="nav_bar">
+				<li class="btn">Home</li>
+				<li class="btn">Other</li>
+			</ol>
+		</nav>
 		<header>
-			<h1>Pollen Tracking...</h1>
+			<h1>Pollen Tracking</h1>
 			<h2>Today in <span id="timezone"></span></h2>
 		</header>
 		<main>
@@ -26,25 +32,22 @@
 					<h2>Grass Pollen: <span id="grass_pollen"></span></h2>
 					<h2>Risk: <span id="grass_risk"></span></h2>
 				</div>
-
-				<div id="grass_count" class="spore_view"></div>
-
 				<div>
 					<h2>Tree Pollen: <span id="tree_pollen"></span></h2>
 					<h2>Risk: <span id="tree_risk"></span></h2>
 				</div>
-				
-				<div id="tree_count" class="spore_view"></div>
-
 				<div>
 					<h2>Weed Pollen: <span id="weed_pollen"></span></h2>
 					<h2>Risk: <span id="weed_risk"></span></h2>
 				</div>
-
-				<div id="weed_count" class="spore_view"></div>
-
 			</section>
+			<div id="weed_count" class="spore_view"></div>
+			<div id="grass_count" class="spore_view"></div>
+			<div id="tree_count" class="spore_view"></div>
+
 		</main>
+
+		<a href="/country.html"><button>Next</button></a>
 
 
 
