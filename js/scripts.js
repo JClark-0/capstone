@@ -1,26 +1,28 @@
 
 
-// Getting your lat and lng based on location
+// Getting your lat and lng based on location saving to variable 
+let lat, lng;
 navigator.geolocation.getCurrentPosition((position) => {
-  let lat =(position.coords.latitude);
-  let lng = (position.coords.longitude);
+  lat =(position.coords.latitude);
+  lng = (position.coords.longitude);
 
   // console.log(lat);
   // console.log(lng);
+  fetchData(lat, lng);
 
-  // let urlWind 'https://api.ambeedata.com/weather/latest/by-lat-lng?lat=12&lng=77';
-  // let url = 'https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=110.9889055&lng=50.574044';
-  // let urlPollen = `https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=${lat}&lng=${lng}`;
-  // let options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'x-api-key': '190afb5964122524d01182ba581dfaba793d2b66700fc83124429d93264e8f46', 
-  //     'Content-type': 'application/json'
-  //   }
-  // };
+});
 
-  // let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&domains=cams_global`;
+if (!document.URL.includes("country.html")) {
+  // Load default coordinates if not on the "index.html" page
+  lat = 40.014984;
+  lng = -105.270546;
 
+  // Call function to fetch air quality data
+  fetchData(lat, lng);
+}
+
+
+function fetchData(lat,lng) {
   let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
   fetch(urlPollen)
   .then((response) => response.json()) // Return it as JSON data
@@ -28,7 +30,6 @@ navigator.geolocation.getCurrentPosition((position) => {
 
     // Just to see what is going on
     console.log(data); 
-
 
     // Location
     let timeZone = document.getElementById('timezone');
@@ -65,7 +66,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     let aqi = data.current.us_aqi;
     console.log('USA AQI', aqi);
 
-    if (aqi < 50){
+    if (aqi <= 50){
       console.log('Condition: Good');
     } else if ( aqi >= 51 && aqi <= 100) {
       console.log('Condition: Moderate');
@@ -78,73 +79,22 @@ navigator.geolocation.getCurrentPosition((position) => {
     } else if (aqi >= 301 && aqi <= 500) {
       console.log('Condition: Hazardous');
     }
-    
-
-
-
-
-//     //Grass Pollen
-//     let grassPollen = document.getElementById('grass_pollen');
-//     grassPollen.innerHTML = data.data[0].Count.grass_pollen;
-
-//     let grassSpores = data.data[0].Count.grass_pollen;
-//     let grassCount = document.getElementById('grass_count');
-
-//     for (let i = 0; i < grassSpores; i++) {
-//       let circle = document.createElement('div');
-//       circle.classList.add('spore', 'grass');
-//       grassCount.appendChild(circle);
-//     }
-
-//     //Tree Pollen
-//     let treePollen = document.getElementById('tree_pollen');
-//     treePollen.innerHTML = data.data[0].Count.tree_pollen;
-
-//     let treeSpores = data.data[0].Count.tree_pollen;
-//     let treeCount = document.getElementById('tree_count');
-
-//     for (let i = 0; i < treeSpores; i++) {
-//       let circle = document.createElement('div');
-//       circle.classList.add('spore', 'tree');
-//       // circle.style.left = Math.random() * window.innerWidth + 'px';
-//       // circle.style.top = Math.random() * window.innerHeight + 'px';
-
-//       // let directionX = Math.random(); 
-//       // let directionY = Math.random(); 
-
-//       circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-//       // circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-//       treeCount.appendChild(circle);
-//     }
-
-//     //Weed Pollen
-//     let weedPollen = document.getElementById('weed_pollen');
-//     weedPollen.innerHTML = data.data[0].Count.weed_pollen;
-
-//     let weedSpores = data.data[0].Count.weed_pollen;
-//     let weedCount = document.getElementById('weed_count');
-
-//     for (let i = 0; i < weedSpores; i++) {
-//       let circle = document.createElement('div');
-//       circle.classList.add('spore', 'weed');
-//       weedCount.appendChild(circle);
-//     }
-
-
-//     //Allergy Risk
-//     let grassRisk = document.getElementById('grass_risk');
-//     grassRisk.innerHTML = data.data[0].Risk.grass_pollen;
-
-//     let treeRisk = document.getElementById('tree_risk');
-//     treeRisk.innerHTML = data.data[0].Risk.tree_pollen;
-
-//     let weedRisk = document.getElementById('weed_risk');
-//     weedRisk.innerHTML = data.data[0].Risk.weed_pollen;
-
   })
+  .catch((error) => {
+    console.error('Error fetching air quality data:', error);
+  });
+}
 
-});
 
 
 
 
+// fetch('json/data.json')
+// 	.then(response => response.json())
+// 	.then(data => {
+// 		// And passes the data to something
+// 		console.log(data)
+// 	})
+
+// add saved lat and lng to add to list of places 
+// add last updated 
