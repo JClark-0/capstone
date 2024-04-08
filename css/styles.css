@@ -3,20 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
 
 :root {
-    --font-family: monospace;
+ 
     --display-font: "Space Grotesk", sans-serif;
-    --font-color: white;
-    --font-size: 16px;
     --display-size: 36px;
+
+    --header-size: calc(var(--base-size)*1.5);
+
+    --font-family: monospace;
+    --base-size: 16px;
+
+    --font-color: white;
+
     --gutters: 10px;
+    --radius: 5px;
 
-
-
-    /* grass colors */
+    /* good colors */
     --grass-bg: rgb(167, 221, 75); 
     --grass-spore: #3d5b06bd;
 
-    /* tree colors */
+    /* moderate colors */
     --tree-bg: rgb(30, 21, 18); 
     --tree-spore: #bcf35dbd;
 
@@ -25,13 +30,12 @@
 
 body {
     font-family: var(--font-family);
-    font-size: var(--font-size);
+    font-size: var(--base-size);
     color: var(--font-color);
     background-color: var(--tree-bg);
-    margin-left: var(--gutters);
-    margin-left: var(--gutters);
-    margin-right: var(--gutters);
-
+    margin-top: calc(var(--gutters)*2);
+    margin-left: calc(var(--gutters)*2);
+    margin-right: calc(var(--gutters)*2);
 }
 
 .nav_bar {
@@ -42,15 +46,15 @@ body {
     margin-bottom: var(--gutters);
 }
 
-.btn:hover {
+/* .btn:hover {
     text-decoration: underline;
     cursor: pointer;
-}
+} */
 
-header {
+/* header {
     margin-top: var(--gutters);
     margin-bottom: var(--gutters);
-}
+} */
 
 h1 {
     font-family: var(--display-font);
@@ -58,48 +62,113 @@ h1 {
     font-weight: 500;
 }
 
-section {
-    display: flex;
-    flex-direction: row;
-    column-gap: calc(var(--gutters)* 4);
-    margin-top:calc(var(--gutters)* 4);
+.timezone_header {
+    font-family: var(--display-font);
+    font-size: var(--header-size);
+    font-weight: 400;
+    position: absolute; 
+    left: 0;
+    bottom:0;
+    margin-left: var(--gutters);
     margin-bottom: var(--gutters);
+    margin-right: var(--gutters);
+}
+.aqi_box {
+    position: absolute; 
+    right: 0;
+    top:0;
+    margin-right: var(--gutters);
+    margin-top: var(--gutters);
 }
 
+#aqi {
+    font-family: var(--display-font);
+    font-size: var(--header-size);
+    font-weight: 500;
+    text-align: right;
+}
 
-.spore_view {
+#condition {
+    font-size: var(--base-size);
+    font-weight: 500;
+    background: white;
+    color: black;
+    border-radius: var(--radius);
+    padding: 5px;
+}
+
+#timezone {
+    font-weight: 500;
+}
+
+.pollutant_view {
     display: flex;
     flex-wrap: wrap;
+    height: calc(100vh - var(--gutters)*12);
+    overflow: hidden;
+    position: relative;
+    /* outline: 1px white solid; */
+    
 }
-.spore {
+.pollutant {
     height: var(--spore-size);
     width: var(--spore-size);
     border-radius: 50%;
     /* mix-blend-mode: color-dodge; */
 }
 
-.grass {
-    background-color: var(--grass-spore);
+.pm2_5 {
+    background: white;
 }
 
-.tree {
-    background-color: var(--tree-spore);
+.ozone{
+    background: rgb(78, 198, 9);
 }
 
-.weed {
-    background-color: #3be46b;
+.cm{
+    background: rgb(189, 213, 33);
 }
 
-button {
+.nd {
+    background: rgb(218, 6, 218);
+}
+
+.sd {
+    background: rgb(35, 121, 219);
+}
+.pollutant {
+    height: 25px;
+    width:25px;
+    border-radius: 50%;
+}
+
+.nxt_btn {
     background: darkgreen;
     color: white;
+    position: absolute;
+    right: 0;
+    margin-right: calc(var(--gutters)*2);
 }
 
-@keyframes moveSpore {
+
+@keyframes moveAround {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(50px, 50px); /* Adjust as needed */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+
+/* @keyframes moveSpore {
     0% {
       transform: translate(0, 0);
     }
     100% {
-      transform: translate(100vw, 100vh); /* Adjust destination position */
+      transform: translate(100vw, 100vh); /* Adjust destination position 
     }
-  }
+  }  */

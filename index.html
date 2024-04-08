@@ -21,25 +21,32 @@
 				<li class="btn">Other</li>
 			</ol>
 		</nav>
-		<header>
-			<h1>Pollution</h1>
-			<h2>Today in <span id="timezone"></span></h2>
-		</header>
 		<main>
+			<h1>Pollution</h1>
+			<div class="pollutant_view">
+				<div id="pm2_5_count"></div>
+				<div id="ozone_count"></div>
+				<div id="cm_count"></div>
+				<div id="nd_count"></div>
+				<div id="sd_count"></div>
+				<h2 class="timezone_header">Today in<br><span id="timezone"></span></h2>
+				<div class="aqi_box">
+					<h2 id="aqi"></h2>
+					<h3 id="condition"></h3>
+				</div>
+			</div>
+			<a class="nxt_btn" href="/country.html"><button>Next</button></a>
 
-			<section>
-				<div>
-					<h2>Grass Pollen: <span id="grass_pollen"></span></h2>
-					<h2>Risk: <span id="grass_risk"></span></h2>
-				</div>
-				<div>
-					<h2>Tree Pollen: <span id="tree_pollen"></span></h2>
-					<h2>Risk: <span id="tree_risk"></span></h2>
-				</div>
-				<div>
-					<h2>Weed Pollen: <span id="weed_pollen"></span></h2>
-					<h2>Risk: <span id="weed_risk"></span></h2>
-				</div>
+
+		
+		</main>
+		<!-- script always before closing body tag -->
+		<script src="js/scripts.js"></script>
+
+	</body>
+
+</html>
+
 				<!-- <div>
 					<h2>Grass Pollen: <span id="grass_pollen"></span></h2>
 					<h2>Risk: <span id="grass_risk"></span></h2>
@@ -51,22 +58,9 @@
 				<div>
 					<h2>Weed Pollen: <span id="weed_pollen"></span></h2>
 					<h2>Risk: <span id="weed_risk"></span></h2>
-				</div> -->
-			</section>
-			<div id="weed_count" class="spore_view"></div>
+				</div> 
+			
+			
+						<div id="weed_count" class="spore_view"></div>
 			<div id="grass_count" class="spore_view"></div>
-			<div id="tree_count" class="spore_view"></div>
-
-		</main>
-
-		<a href="/country.html"><button>Next</button></a>
-
-
-
-
-		<!-- script always before closing body tag -->
-		<script src="js/scripts.js"></script>
-
-	</body>
-
-</html>
+			<div id="tree_count" class="spore_view"></div>-->
