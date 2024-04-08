@@ -11,14 +11,14 @@ navigator.geolocation.getCurrentPosition((position) => {
 });
 
 //Function to create the circles based on pollutant count
-function createPollutant(data, pollutantName, containerId){
+function createPollutant(data, pollutantName, containerId, pollutantClass){
   var pollutantCount = data.current[pollutantName];
   var pollutantCountElement = document.getElementById(containerId);
 
   //Loop through the pollutant count 
     for (let i = 0; i < pollutantCount; i++) {
       let circle = document.createElement('div');
-      circle.classList.add(pollutantName, 'pollutant');
+      circle.classList.add(pollutantClass, 'pollutant');
       
       //Animate circles
       circle.style.left = Math.random() * window.innerWidth + 'px';
@@ -27,7 +27,7 @@ function createPollutant(data, pollutantName, containerId){
       let directionX = Math.random(); 
       let directionY = Math.random(); 
 
-      circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+      circle.style.animation = `moveSpore ${Math.random() * 40 + 20}s linear infinite`;
       circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
       
       //Display
@@ -52,112 +52,42 @@ function fetchData(lat,lng) {
     timeZone.innerHTML = formattedTimezone;
 
 
-    //PM2.5 Pollutant
+    //PM2.5 Pollutant: Data, Pollutant Name, Container Id
+    createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
+
     // let pm2_5 = data.current.pm2_5;
-    let pm2_5Unit = data.current_units.pm2_5;
+    // let pm2_5Unit = data.current_units.pm2_5;
     // console.log('pm2.5', pm2_5, pm2_5Unit);
-    createPollutant (data, 'pm2_5', 'pm2_5_count');
 
+    //Ozone: Data, Pollutant Name, Container Id
+    createPollutant (data, 'ozone', 'ozone_count', 'ozone');
 
-    // let pm_25Count = document.getElementById('pm2_5_count');
-    // for (let i = 0; i < pm2_5; i++) {
-    //     let circle = document.createElement('div');
-    //     circle.classList.add('pm2_5', 'pollutant');
-       
-    //     circle.style.left = Math.random() * window.innerWidth + 'px';
-    //     circle.style.top = Math.random() * window.innerHeight + 'px';
-  
-    //     let directionX = Math.random(); 
-    //     let directionY = Math.random(); 
-  
-    //     circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-    //     circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-
-    //     pm_25Count.appendChild(circle);
-    //   }
-
-    //ozone
     // let ozone = data.current.ozone;
     // let ozoneUnit = data.current_units.ozone;
     // console.log('ozone', ozone, ozoneUnit);
 
-    // let ozoneCount = document.getElementById('ozone_count');
-    // for (let i = 0; i < ozone; i++) {
-    //     let circle = document.createElement('div');
-    //     circle.classList.add('ozone', 'pollutant');
 
-    //     circle.style.left = Math.random() * window.innerWidth + 'px';
-    //     circle.style.top = Math.random() * window.innerHeight + 'px';
-  
-    //     let directionX = Math.random(); 
-    //     let directionY = Math.random(); 
-  
-    //     circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-    //     circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-    //     ozoneCount.appendChild(circle);
-    //   }
+    //Carbon Monoxide: Data, Pollutant Name, Container Id 
+    createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
 
-    //Carbon Monoxide 
     // let carbMon = data.current.carbon_monoxide;
     // let carbMonUnit = data.current_units.carbon_monoxide;
     // console.log('carbon monoxide', carbMon, carbMonUnit);
 
-    // let cmCount = document.getElementById('cm_count');
-    // for (let i = 0; i < carbMon; i++) {
-    //     let circle = document.createElement('div');
-    //     circle.classList.add('cm', 'pollutant');
+ 
+    //Nitrogen Dioxide: Data, Pollutant Name, Container Id 
+    createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
 
-    //     circle.style.left = Math.random() * window.innerWidth + 'px';
-    //     circle.style.top = Math.random() * window.innerHeight + 'px';
-  
-    //     let directionX = Math.random(); 
-    //     let directionY = Math.random(); 
-  
-    //     circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-    //     circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-    //     cmCount.appendChild(circle);
-    //   }
-
-
-    //Nitrogen Dioxide 
     // let nitroD = data.current.nitrogen_dioxide;
     // let nitroDUnit = data.current_units.nitrogen_dioxide;
     // console.log('nitrogen dioxide', nitroD, nitroDUnit);
 
-    // let ndCount = document.getElementById('nd_count');
-    // for (let i = 0; i < nitroD; i++) {
-    //     let circle = document.createElement('div');
-    //     circle.classList.add('nd', 'pollutant');
-    //     circle.style.left = Math.random() * window.innerWidth + 'px';
-    //     circle.style.top = Math.random() * window.innerHeight + 'px';
-  
-    //     let directionX = Math.random(); 
-    //     let directionY = Math.random(); 
-  
-    //     circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-    //     circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-    //     ndCount.appendChild(circle);
-    //   }
+    //Sulphur Dioxide:Data, Pollutant Name, Container Id  
+    createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
 
-    //Sulphur Dioxide 
     // let sulphD = data.current.sulphur_dioxide;
     // let sulphDUnit = data.current_units.sulphur_dioxide;
     // console.log('sulphur dioxide', sulphD, sulphDUnit);
-
-    // let sdCount = document.getElementById('sd_count');
-    // for (let i = 0; i < sulphD; i++) {
-    //     let circle = document.createElement('div');
-    //     circle.classList.add('sd', 'pollutant');
-    //     circle.style.left = Math.random() * window.innerWidth + 'px';
-    //     circle.style.top = Math.random() * window.innerHeight + 'px';
-  
-    //     let directionX = Math.random(); 
-    //     let directionY = Math.random(); 
-  
-    //     circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
-    //     circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-    //     sdCount.appendChild(circle);
-    //   }
 
     //USA AQI
     let aqi = data.current.us_aqi;
@@ -199,31 +129,6 @@ function fetchData(lat,lng) {
 
 
 
-  // moveCircles();
-
-
-// function moveCircles() {
-//   const circles = document.querySelectorAll('.pollutant');
-//   const container = document.querySelector('.pollutant_view');
-
-//   circles.forEach(circle => {
-//     const containerWidth = container.clientWidth;
-//     const containerHeight = container.clientHeight;
-//     const circleWidth = circle.clientWidth;
-//     const circleHeight = circle.clientHeight;
-
-//     const xPos = Math.random() * (containerWidth - circleWidth);
-//     const yPos = Math.random() * (containerHeight - circleHeight);
-
-//     circle.style.position = 'absolute';
-//     circle.style.left = xPos + 'px';
-//     circle.style.top = yPos + 'px';
-//   });
-// }
-
-
-
-
 // lat and lng for other pages 
 // if (!document.URL.includes("country.html")) {
 //   lat = 40.014984;
@@ -232,9 +137,6 @@ function fetchData(lat,lng) {
 //   // Call function to fetch air quality data
 //   fetchData(lat, lng);
 // }
-
-
-
 
 // fetch('json/data.json')
 // 	.then(response => response.json())
