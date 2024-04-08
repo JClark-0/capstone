@@ -69,16 +69,14 @@ h1 {
     position: absolute; 
     left: 0;
     bottom:0;
-    margin-left: var(--gutters);
     margin-bottom: var(--gutters);
     margin-right: var(--gutters);
 }
 .aqi_box {
     position: absolute; 
     right: 0;
-    top:0;
-    margin-right: var(--gutters);
-    margin-top: var(--gutters);
+    bottom:0;
+    margin-bottom: var(--gutters);
 }
 
 #aqi {
@@ -108,7 +106,7 @@ h1 {
     overflow: hidden;
     position: relative;
     /* outline: 1px white solid; */
-    
+
 }
 .pollutant {
     height: var(--spore-size);
@@ -164,11 +162,12 @@ h1 {
   }
   
 
-/* @keyframes moveSpore {
+@keyframes moveSpore {
     0% {
       transform: translate(0, 0);
     }
     100% {
-      transform: translate(100vw, 100vh); /* Adjust destination position 
+      transform: translate(100vw, 100vh); 
     }
-  }  */
+  } 
+    

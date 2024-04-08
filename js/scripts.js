@@ -46,6 +46,16 @@ function fetchData(lat,lng) {
     for (let i = 0; i < pm2_5; i++) {
         let circle = document.createElement('div');
         circle.classList.add('pm2_5', 'pollutant');
+       
+        circle.style.left = Math.random() * window.innerWidth + 'px';
+        circle.style.top = Math.random() * window.innerHeight + 'px';
+  
+        let directionX = Math.random(); 
+        let directionY = Math.random(); 
+  
+        circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+        circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
+
         pm_25Count.appendChild(circle);
       }
 
@@ -58,6 +68,15 @@ function fetchData(lat,lng) {
     for (let i = 0; i < ozone; i++) {
         let circle = document.createElement('div');
         circle.classList.add('ozone', 'pollutant');
+
+        circle.style.left = Math.random() * window.innerWidth + 'px';
+        circle.style.top = Math.random() * window.innerHeight + 'px';
+  
+        let directionX = Math.random(); 
+        let directionY = Math.random(); 
+  
+        circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+        circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
         ozoneCount.appendChild(circle);
       }
 
@@ -70,6 +89,15 @@ function fetchData(lat,lng) {
     for (let i = 0; i < carbMon; i++) {
         let circle = document.createElement('div');
         circle.classList.add('cm', 'pollutant');
+
+        circle.style.left = Math.random() * window.innerWidth + 'px';
+        circle.style.top = Math.random() * window.innerHeight + 'px';
+  
+        let directionX = Math.random(); 
+        let directionY = Math.random(); 
+  
+        circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+        circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
         cmCount.appendChild(circle);
       }
 
@@ -83,6 +111,14 @@ function fetchData(lat,lng) {
     for (let i = 0; i < nitroD; i++) {
         let circle = document.createElement('div');
         circle.classList.add('nd', 'pollutant');
+        circle.style.left = Math.random() * window.innerWidth + 'px';
+        circle.style.top = Math.random() * window.innerHeight + 'px';
+  
+        let directionX = Math.random(); 
+        let directionY = Math.random(); 
+  
+        circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+        circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
         ndCount.appendChild(circle);
       }
 
@@ -95,6 +131,14 @@ function fetchData(lat,lng) {
     for (let i = 0; i < sulphD; i++) {
         let circle = document.createElement('div');
         circle.classList.add('sd', 'pollutant');
+        circle.style.left = Math.random() * window.innerWidth + 'px';
+        circle.style.top = Math.random() * window.innerHeight + 'px';
+  
+        let directionX = Math.random(); 
+        let directionY = Math.random(); 
+  
+        circle.style.animation = `moveSpore ${Math.random() * 10 + 10}s linear infinite`;
+        circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
         sdCount.appendChild(circle);
       }
 
