@@ -5,7 +5,7 @@
 :root {
  
     --display-font: "Space Grotesk", sans-serif;
-    --display-size: 36px;
+    --display-size: 40px;
 
     --header-size: calc(var(--base-size)*1.5);
 
@@ -15,6 +15,7 @@
     --font-color: white;
 
     --gutters: 10px;
+    --padding: 5px;
     --radius: 5px;
 
     /* good colors */
@@ -25,7 +26,7 @@
     --tree-bg: rgb(30, 21, 18); 
     --tree-spore: #bcf35dbd;
 
-    --spore-size:35px;
+    --pollutant-size:35px;
 }
 
 body {
@@ -46,15 +47,10 @@ body {
     margin-bottom: var(--gutters);
 }
 
-/* .btn:hover {
+.btn:hover {
     text-decoration: underline;
     cursor: pointer;
-} */
-
-/* header {
-    margin-top: var(--gutters);
-    margin-bottom: var(--gutters);
-} */
+}
 
 h1 {
     font-family: var(--display-font);
@@ -68,14 +64,13 @@ h1 {
     font-weight: 400;
     position: absolute; 
     left: 0;
-    bottom:0;
-    margin-bottom: var(--gutters);
-    margin-right: var(--gutters);
+    bottom: 0;
+    margin-bottom: calc(var(--gutters) - var(--padding)) ;
 }
 .aqi_box {
     position: absolute; 
     right: 0;
-    bottom:0;
+    bottom: 0;
     margin-bottom: var(--gutters);
 }
 
@@ -92,7 +87,7 @@ h1 {
     background: white;
     color: black;
     border-radius: var(--radius);
-    padding: 5px;
+    padding: var(--padding);
 }
 
 #timezone {
@@ -109,8 +104,8 @@ h1 {
 
 }
 .pollutant {
-    height: var(--spore-size);
-    width: var(--spore-size);
+    height: var(--pollutant-size);
+    width: var(--pollutant-size);
     border-radius: 50%;
     /* mix-blend-mode: color-dodge; */
 }
