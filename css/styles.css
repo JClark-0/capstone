@@ -135,27 +135,35 @@ h1 {
     border-radius: 50%;
 }
 
-.nxt_btn {
+/* .nxt_btn {
     background: darkgreen;
     color: white;
     position: absolute;
     right: 0;
     margin-right: calc(var(--gutters)*2);
+} */
+
+
+/* ABOUT PAGE */
+
+.about_main {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gutters)*4);
+    margin-top: calc(var(--gutters)*4);
+}
+.pollution_info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding);
+    margin-top: var(--gutters);
+}
+.pollution_type {
+    padding: var(--padding);
+    border: 1px white solid;
+    border-radius: var(--radius);
 }
 
-
-@keyframes moveAround {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(50px, 50px); /* Adjust as needed */
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-  
 
 @keyframes moveSpore {
     0% {
