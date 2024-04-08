@@ -18,6 +18,17 @@
     --padding: 5px;
     --radius: 5px;
 
+    /* Background Colors */
+    --dark-bg: rgb(30, 21, 18); 
+
+    /* Pollutant Colors */
+    --pm2_5: white;
+    --ozone: rgb(78, 198, 9);
+    --cm: rgb(218, 6, 218);
+    --nd: rgb(218, 6, 218);
+    --sd: rgb(35, 121, 219);
+    
+
     /* good colors */
     --grass-bg: rgb(167, 221, 75); 
     --grass-spore: #3d5b06bd;
@@ -33,7 +44,7 @@ body {
     font-family: var(--font-family);
     font-size: var(--base-size);
     color: var(--font-color);
-    background-color: var(--tree-bg);
+    background-color: var(--dark-bg);
     margin-top: calc(var(--gutters)*2);
     margin-left: calc(var(--gutters)*2);
     margin-right: calc(var(--gutters)*2);
@@ -111,23 +122,23 @@ h1 {
 }
 
 .pm2_5 {
-    background: white;
+    background: var(--pm2_5);
 }
 
 .ozone{
-    background: rgb(78, 198, 9);
+    background: var(--ozone);
 }
 
 .cm{
-    background: rgb(189, 213, 33);
+    background: var(--cm);
 }
 
 .nd {
-    background: rgb(218, 6, 218);
+    background: var(--nd);
 }
 
 .sd {
-    background: rgb(35, 121, 219);
+    background: var(--sd);
 }
 .pollutant {
     height: 25px;
