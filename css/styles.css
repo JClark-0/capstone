@@ -120,7 +120,7 @@ h1 {
 .pollutant_view {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100vh - var(--gutters)*14);
+    height: calc(100dvh - var(--gutters)*14);
     overflow: hidden;
     position: relative;
     /* outline: 1px white solid; */
