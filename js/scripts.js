@@ -1,7 +1,6 @@
 
 
 // Getting your lat and lng based on location saving to variable 
-// let lat, lng;
 navigator.geolocation.getCurrentPosition((position) => {
   lat =(position.coords.latitude);
   lng = (position.coords.longitude);
@@ -36,6 +35,11 @@ function createPollutant(data, pollutantName, containerId, pollutantClass){
     }
   }
 
+  //Function to show data 
+  function showData(data, pollutantName, containerId, pollutantClass){
+    var pollutantCount = data.current[pollutantName];
+    // need to finish this
+  }
 
 function fetchData(lat,lng) {
   let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
@@ -52,14 +56,14 @@ function fetchData(lat,lng) {
     timeZone.innerHTML = formattedTimezone;
 
 
-    //PM2.5 Pollutant: Data, Pollutant Name, Container Id
+    //PM2.5 Pollutant: Data, Pollutant Name, Container Id, Pollutant Class
     createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
 
     // let pm2_5 = data.current.pm2_5;
     // let pm2_5Unit = data.current_units.pm2_5;
     // console.log('pm2.5', pm2_5, pm2_5Unit);
 
-    //Ozone: Data, Pollutant Name, Container Id
+    //Ozone: Data, Pollutant Name, Container Id, Pollutant Class
     createPollutant (data, 'ozone', 'ozone_count', 'ozone');
 
     // let ozone = data.current.ozone;
@@ -67,7 +71,7 @@ function fetchData(lat,lng) {
     // console.log('ozone', ozone, ozoneUnit);
 
 
-    //Carbon Monoxide: Data, Pollutant Name, Container Id 
+    //Carbon Monoxide: Data, Pollutant Name, Container Id, Pollutant Class 
     createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
 
     // let carbMon = data.current.carbon_monoxide;
@@ -75,14 +79,14 @@ function fetchData(lat,lng) {
     // console.log('carbon monoxide', carbMon, carbMonUnit);
 
  
-    //Nitrogen Dioxide: Data, Pollutant Name, Container Id 
+    //Nitrogen Dioxide: Data, Pollutant Name, Container Id, Pollutant Class 
     createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
 
     // let nitroD = data.current.nitrogen_dioxide;
     // let nitroDUnit = data.current_units.nitrogen_dioxide;
     // console.log('nitrogen dioxide', nitroD, nitroDUnit);
 
-    //Sulphur Dioxide:Data, Pollutant Name, Container Id  
+    //Sulphur Dioxide:Data, Pollutant Name, Container Id, Pollutant Class  
     createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
 
     // let sulphD = data.current.sulphur_dioxide;
@@ -121,10 +125,8 @@ function fetchData(lat,lng) {
     document.getElementById('condition').textContent = conditionText;
   })
   .catch((error) => {
-    console.error('Error fetching air quality data:', error);
+    console.error('Error', error);
   });
-
-
 }
 
 
