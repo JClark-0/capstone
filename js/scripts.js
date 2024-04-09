@@ -135,9 +135,9 @@ function fetchData(lat,lng) {
 
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 80) {
-			btnTop.classList.add("active");
+			btnTop.classList.add("scrolled");
 		} else {
-			btnTop.classList.remove("active");
+			btnTop.classList.remove("scrolled");
 		}
 	});
 
