@@ -44,7 +44,7 @@
 html {
     scroll-behavior: smooth;
   }
-  
+
 body {
     font-family: var(--body-font);
     font-size: var(--base-size);
@@ -125,7 +125,7 @@ h1 {
 .pollutant_view {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100dvh - var(--gutters)*14);
+    height: calc(100dvh - var(--gutters)*12);
     overflow: hidden;
     position: relative;
     /* outline: 1px white solid; */
