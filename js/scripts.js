@@ -10,9 +10,9 @@ navigator.geolocation.getCurrentPosition((position) => {
 });
 
 //Function to create the circles based on pollutant count
-function createPollutant(data, pollutantName, containerId, pollutantClass){
-  var pollutantCount = data.current[pollutantName];
-  var pollutantCountElement = document.getElementById(containerId);
+const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
+  const pollutantCount = data.current[pollutantName];
+  const pollutantCountElement = document.getElementById(containerId);
 
   //Loop through the pollutant count 
     for (let i = 0; i < pollutantCount; i++) {
@@ -33,13 +33,13 @@ function createPollutant(data, pollutantName, containerId, pollutantClass){
       pollutantCountElement.appendChild(circle);
       
     }
-  }
+  };
 
   //Function to show data 
   function showData(data, pollutantName, containerId, pollutantClass){
     var pollutantCount = data.current[pollutantName];
     // need to finish this
-  }
+  };
 
 function fetchData(lat,lng) {
   let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
@@ -130,6 +130,16 @@ function fetchData(lat,lng) {
 }
 
 
+	//Button add remove on scroll position
+	const btnTop = document.querySelector(".top");
+
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 80) {
+			btnTop.classList.add("active");
+		} else {
+			btnTop.classList.remove("active");
+		}
+	});
 
 // lat and lng for other pages 
 // if (!document.URL.includes("country.html")) {
