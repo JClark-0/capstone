@@ -98,13 +98,16 @@ h1 {
     position: absolute; 
     left: 0;
     bottom: 0;
-    backdrop-filter: blur(1px);
 
 }
 .aqi_box {
     position: absolute; 
     right: 0;
     bottom: 0;
+}
+
+.add_blur {
+    -webkit-backdrop-filter: blur(1px); /* Fixes blur for Safari*/
     backdrop-filter: blur(1px);
 }
 
