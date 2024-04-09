@@ -1,53 +1,55 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
- 
+    /* Fonts */
     --display-font: "Space Grotesk", sans-serif;
     --display-size: 40px;
-
     --header-size: calc(var(--base-size)*1.5);
-
-    --font-family: monospace;
+    --body-font: "Poppins", sans-serif;
     --base-size: 16px;
+    --tag-font: monospace;
+    --tag-size: 12px;
 
-    --font-color: white;
-
+   /* Page Formatting */
     --gutters: 10px;
     --padding: 5px;
     --radius: 5px;
 
-    /* Background Colors */
+    /* Page Colors */
     --dark-bg: rgb(30, 21, 18); 
+    --light-bg: rgb(247, 243, 232); 
 
-    /* Pollutant Colors */
-    --pm2_5: white;
+    --light-font: white;
+    --dark-font: rgb(1, 29, 1); 
+
+    /* Pollutant Formatting */
+    --pm2_5: rgb(233, 240, 111);
     --ozone: rgb(78, 198, 9);
-    --cm: rgb(218, 6, 218);
-    --nd: rgb(218, 6, 218);
-    --sd: rgb(35, 121, 219);
-    
-
-    /* good colors */
-    --grass-bg: rgb(167, 221, 75); 
-    --grass-spore: #3d5b06bd;
-
-    /* moderate colors */
-    --tree-bg: rgb(30, 21, 18); 
-    --tree-spore: #bcf35dbd;
+    --cm: rgb(69, 224, 100);
+    --nd: rgb(218, 165, 6);
+    --sd: rgb(4, 86, 11);
 
     --pollutant-size:35px;
+    
+    /* good colors */
+    /* --grass-bg: rgb(167, 221, 75); 
+    --grass-spore: #3d5b06bd; */
+
+    /* moderate colors */
+    /* --tree-bg: rgb(30, 21, 18); 
+    --tree-spore: #bcf35dbd; */
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--body-font);
     font-size: var(--base-size);
-    color: var(--font-color);
-    background-color: var(--dark-bg);
+    color: var(--dark-font);
+    background-color: var(--light-bg);
     margin-top: calc(var(--gutters)*2);
     margin-left: calc(var(--gutters)*2);
     margin-right: calc(var(--gutters)*2);
+    margin-bottom: calc(var(--gutters)*2);
 }
 
 .nav_bar {
@@ -58,9 +60,16 @@ body {
     margin-bottom: var(--gutters);
 }
 
-.btn:hover {
+.btn:not(.active):hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.active {
+    background-color: rgb(243, 196, 57);
+    font-weight: 500;
+    padding: var(--padding);
+    border-radius: var(--radius);
 }
 
 h1 {
@@ -76,13 +85,16 @@ h1 {
     position: absolute; 
     left: 0;
     bottom: 0;
-    margin-bottom: calc(var(--gutters) - var(--padding)) ;
+    margin-bottom: calc(var(--gutters) - var(--padding));
+    backdrop-filter: blur(1px);
+
 }
 .aqi_box {
     position: absolute; 
     right: 0;
     bottom: 0;
     margin-bottom: var(--gutters);
+    backdrop-filter: blur(1px);
 }
 
 #aqi {
@@ -108,7 +120,7 @@ h1 {
 .pollutant_view {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100vh - var(--gutters)*12);
+    height: calc(100vh - var(--gutters)*14);
     overflow: hidden;
     position: relative;
     /* outline: 1px white solid; */
@@ -157,22 +169,60 @@ h1 {
 
 /* ABOUT PAGE */
 
+.about_page{
+    background-color: var(--light-bg);
+    color: var(--dark-font)
+}
 .about_main {
     display: flex;
     flex-direction: column;
     gap: calc(var(--gutters)*4);
     margin-top: calc(var(--gutters)*4);
 }
+.pollution_list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding)*4);
+    margin-top: var(--gutters);
+}
 .pollution_info {
     display: flex;
     flex-direction: column;
-    gap: var(--padding);
-    margin-top: var(--gutters);
-}
-.pollution_type {
-    padding: var(--padding);
-    border: 1px white solid;
+    justify-content: space-between;
+    padding: calc(var(--padding)*4);
+    background-color:white;
     border-radius: var(--radius);
+    /* Add these to variables */
+    height: 150px;
+    max-width: 400px;
+}
+
+.pollutant_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pollutant_tag {
+    display: flex;
+    flex-direction: row;
+    gap: var(--padding);
+    align-items: center;
+}
+
+.icon {
+    height: calc(var(--pollutant-size)/2);
+    width: calc(var(--pollutant-size)/2);
+    border-radius: 50%;
+}
+
+.pollutant_units {
+    font-family: var(--tag-font);
+    font-size: var(--tag-size);
+    background-color: var(--dark-bg);
+    color: white;
+    border-radius: var(--radius);
+    padding: var(--padding);
 }
 
 
