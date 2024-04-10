@@ -19,23 +19,24 @@ function fetchData(lat,lng) {
 
     //PM2.5: Create Pollutant + Show Data with units
     createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
-    showData (data, 'pm2_5', 'pm2_5_data');
+    showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+    // showUnit (data, 'pm2_5');
 
     //Ozone: Create Pollutant + Show Data with units
     createPollutant (data, 'ozone', 'ozone_count', 'ozone');
-    showData (data, 'ozone', 'ozone_data');
+    showData (data, 'ozone', 'ozone_data','ozoneUnitId');
 
     //Carbon Monoxide: Create Pollutant + Show Data with units
     createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
-    showData (data, 'carbon_monoxide', 'cm_data');
+    showData (data, 'carbon_monoxide', 'cm_data','cmUnitId');
 
     //Nitrogen Dioxide: Data, Pollutant Name, Container Id, Pollutant Class 
     createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
-    showData (data, 'nitrogen_dioxide', 'nd_data');
+    showData (data, 'nitrogen_dioxide', 'nd_data', 'ndUnitId');
 
     //Sulphur Dioxide:Data, Pollutant Name, Container Id, Pollutant Class  
     createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
-    showData (data, 'sulphur_dioxide', 'sd_data');
+    showData (data, 'sulphur_dioxide', 'sd_data','sdUnitId');
 
     //USA AQI
     let aqi = data.current.us_aqi;
@@ -48,22 +49,22 @@ function fetchData(lat,lng) {
     let conditionText = '';
 
     if (aqi <= 50){
-      conditionText = 'Condition: Good';
+      conditionText = 'Good';
       // console.log('Condition: Good');
     } else if ( aqi >= 51 && aqi <= 100) {
       conditionText = 'Moderate';
       // console.log('Condition: Moderate');
     } else if (aqi >= 101 && aqi <= 150) {
-      conditionText = 'Condition: Unhealthy(for senstive groups';
+      conditionText = 'Unhealthy(for senstive groups';
       // console.log('Condition: Unhealthy(for senstive groups)');
     } else if (aqi >= 101 && aqi <= 150) {
-      conditionText = 'Condition: Unhealthy';
+      conditionText = 'Unhealthy';
       // console.log('Condition: Unhealthy');
     } else if (aqi >= 201 && aqi <= 300) {
-      conditionText = 'Condition: Very Unhealthy';
+      conditionText = 'Very Unhealthy';
       // console.log('Condition: Very Unhealthy');
     } else if (aqi >= 301 && aqi <= 500) {
-      conditionText = 'Condition: Hazardous';
+      conditionText = 'Hazardous';
       // console.log('Condition: Hazardous');
     }
     document.getElementById('condition').textContent = conditionText;
@@ -124,11 +125,15 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
   };
 
   //Function to show data 
-  const showData = (data, pollutantName, containerId) =>{
+  const showData = (data, pollutantName, containerId, unitId) =>{
     
     let pollutantData = document.getElementById(containerId);
-    pollutantData.innerHTML = data.current[pollutantName] + " " + data.current_units[pollutantName];
+    pollutantData.innerHTML = data.current[pollutantName];
+
+    let pollutantUnit = document.getElementById(unitId);
+    pollutantUnit.innerHTML = data.current_units[pollutantName];
   };
+
 
 
 

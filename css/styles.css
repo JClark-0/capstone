@@ -9,7 +9,7 @@
     --body-font: "Poppins", sans-serif;
     --base-size: 16px;
     --tag-font: monospace;
-    --tag-size: 12px;
+    --tag-size: 14px;
 
    /* Page Formatting */
     --gutters: 10px;
@@ -60,6 +60,11 @@ body {
     margin-bottom: calc(var(--gutters)*2);
 }
 
+main {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+}
 .nav_bar {
     display:flex;
     flex-direction: row;
@@ -99,7 +104,17 @@ h1 {
     font-size: var(--display-size);
     font-weight: 500;
 }
+.data_btn {
+    background: blue;
+}
 
+.data_list {
+    margin-top: 20px;
+    background-color: white; 
+    border-radius: var(--radius) 0 0 var(--radius);
+    padding: calc(var(--padding)*2);
+    position: absolute; 
+}
 .data {
     margin-top: var(--padding);
     display: flex;
@@ -145,11 +160,12 @@ h1 {
 }
 
 .pollutant_view {
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
     height: calc(100dvh - 200px);
     overflow: hidden;
     position: relative;
+    flex-grow: 1;
     /* outline: 1px white solid; */
 
 }
@@ -164,7 +180,6 @@ h1 {
 .pm2_5 {
     background: var(--pm2_5);
 }
-
 .ozone{
     background: var(--ozone);
 }
@@ -184,6 +199,60 @@ h1 {
     height: 25px;
     width:25px;
     border-radius: 50%;
+}
+.pollution_list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding)*3);
+    height: calc(100dvh - 200px);
+    overflow-y: auto;
+}
+.pollution_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: calc(var(--padding)*3);
+    background-color:white;
+    border-radius: var(--radius);
+    /* Add these to variables */
+    height: 150px;
+    max-width: 320px;
+}
+
+.pollutant_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.pollutant_tag {
+    display: flex;
+    flex-direction: row;
+    gap: var(--padding);
+    align-content: center;
+}
+
+.icon {
+    height: calc(var(--pollutant-size)/2);
+    width: calc(var(--pollutant-size)/2);
+    border-radius: 50%;
+}
+
+.pollutant_no {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-weight: 500;
+}
+
+.pollutant_units {
+    font-family: var(--tag-font);
+    font-size: var(--tag-size);
+    background-color: var(--dark-bg);
+    color: white;
+    border-radius: var(--radius);
+    padding: var(--padding);
 }
 
 /* .nxt_btn {
@@ -226,51 +295,7 @@ h1 {
     gap: calc(var(--gutters)*4);
     margin-top: calc(var(--gutters)*4);
 }
-.pollution_list {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--padding)*4);
-    margin-top: var(--gutters);
-}
-.pollution_info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: calc(var(--padding)*4);
-    background-color:white;
-    border-radius: var(--radius);
-    /* Add these to variables */
-    height: 150px;
-    max-width: 400px;
-}
 
-.pollutant_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.pollutant_tag {
-    display: flex;
-    flex-direction: row;
-    gap: var(--padding);
-    align-items: center;
-}
-
-.icon {
-    height: calc(var(--pollutant-size)/2);
-    width: calc(var(--pollutant-size)/2);
-    border-radius: 50%;
-}
-
-.pollutant_units {
-    font-family: var(--tag-font);
-    font-size: var(--tag-size);
-    background-color: var(--dark-bg);
-    color: white;
-    border-radius: var(--radius);
-    padding: var(--padding);
-}
 
 
 @keyframes moveSpore {
@@ -281,6 +306,20 @@ h1 {
       transform: translate(100vw, 100vh); 
     }
   } 
+
+  @media (min-width: 720px) {
+
+    :root {
+        --gutters: 16px;
+    }
+
+    main {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--gutters);
+        /* justify-content: space-between; */
+    }
+  }
 
 
   /* @media (orientation: landscape) {

@@ -21,9 +21,10 @@
 				<a href="about.html"><li class="btn">About</li></a>
 			</ol>
 		</nav>
-		<main>
+		<header>
 			<h1 class="timezone_header">Today in<br><span id="timezone">Loading...</span></h1>
-
+		</header>
+		<main>
 			<div class="pollutant_view">
 				<div id="pm2_5_count"></div>
 				<div id="ozone_count"></div>
@@ -38,33 +39,106 @@
 					</div>
 				</div>
 			</div>
-			<div class="data">
-				<h3>PM2.5: </h3>
-				<p id ="pm2_5_data"><p>
-			</div>
-			<div class="data">
-				<h3>Ozone: </h3>
-				<p id ="ozone_data"><p>
-			</div>
-			<div class="data">
-				<h3>Carbon Monoxide: </h3>
-				<p id ="cm_data"><p>
-			</div>
-			<div class="data">
-				<h3>Nitrogen Dioxide </h3>
-				<p id ="nd_data"><p></p>
-			</div>
-			<div class="data">
-				<h3>Sulphur Dioxide: </h3>
-				<p id ="sd_data"><p>
-			</div>
+			<!-- <div class="data_btn">></div> -->
+
+			<ol class="pollution_list">
+				<li class="pollution_info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="pollutant_title">
+						<div class="pollutant_tag" >
+							<div class="icon pm2_5"></div>
+							<h3>PM2.5</h3>
+						</div>
+						<div class="pollutant_no">
+							<p id ="pm2_5_data"></p>
+							<h3 class="pollutant_units" id="pm2_5UnitId"></h3>
+						</div>
+					</div>
+				</li>
+				<li class="pollution_info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="pollutant_title">
+						<div class="pollutant_tag" >
+							<div class="icon ozone"></div>
+							<h3>Ozone</h3>
+						</div>
+						<div class="pollutant_no">
+							<p id ="ozone_data"></p>
+							<h3 class="pollutant_units" id="ozoneUnitId"></h3>
+						</div>
+						
+					</div>
+				</li>
+				<li class="pollution_info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="pollutant_title">
+						<div class="pollutant_tag" >
+							<div class="icon cm"></div>
+							<h3>Carbon Monoxide</h3>
+						</div>
+						<div class="pollutant_no">
+							<p id ="cm_data"></p>
+							<h3 class="pollutant_units" id="cmUnitId"></h3>
+						</div>
+					</div>
+				</li>
+				<li class="pollution_info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="pollutant_title">
+						<div class="pollutant_tag" >
+							<div class="icon sd"></div>
+							<h3>Sulphur Dioxide</h3>
+						</div>
+						<div class="pollutant_no">
+							<p id ="sd_data"></p>
+							<h3 class="pollutant_units" id="sdUnitId"></h3>
+						</div>
+					</div>
+				</li>
+				<li class="pollution_info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="pollutant_title">
+						<div class="pollutant_tag" >
+							<div class="icon nd"></div>
+							<h3>Nitrogen Dioxide</h3>
+						</div>
+						<div class="pollutant_no">
+							<p id="nd_data"></p>
+							<h3 class="pollutant_units" id="ndUnitId"></span></h3>
+						</div>
+					</div>
+				</li>
+			</ol>
 		</main>
 		<!-- script always before closing body tag -->
 		<script src="js/scripts.js"></script>
-
 	</body>
 
 </html>
+
+
+			<!-- <div class="data_list">
+				<div class="data">
+					<h3>PM2.5: </h3>
+					<p id ="pm2_5_data"><p>
+				</div>
+				<div class="data">
+					<h3>Ozone: </h3>
+					<p id ="ozone_data"><p>
+				</div>
+				<div class="data">
+					<h3>Carbon Monoxide: </h3>
+					<p id ="cm_data"><p>
+				</div>
+				<div class="data">
+					<h3>Nitrogen Dioxide </h3>
+					<p id ="nd_data"><p></p>
+				</div>
+				<div class="data">
+					<h3>Sulphur Dioxide: </h3>
+					<p id ="sd_data"><p>
+				</div>
+			</div> -->
 
 				<!-- <div>
 					<h2>Grass Pollen: <span id="grass_pollen"></span></h2>
