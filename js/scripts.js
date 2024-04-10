@@ -119,18 +119,21 @@ function fetchData(lat,lng) {
 
     // Button click event to change location
     document.getElementById('nxt_btn').addEventListener('click', () => {
-      const predeterminedLat = 40.014984; // Example latitude
-      const predeterminedLng = -105.270546; // Example longitude
-      fetchData(predeterminedLat, predeterminedLng);
+      fetch('json/data.json')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(location => {
+            const lat = location.lat
+            const lng = location.lng
+            fetchData(lat, lng);
+          });
+      })
+      fetchData(lat, lng);
     });
   });
 
 
-  //     fetch('json/data.json')
-	// .then(response => response.json())
-	// .then(data => {
-	// 	console.log(data)
-	// })
+
 
 
 // lat and lng for other pages 
