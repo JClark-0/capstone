@@ -90,6 +90,14 @@ h1 {
     font-weight: 500;
 }
 
+.data {
+    /* display: flex;
+    flex-direction: row; */
+    padding-top: var(--padding);
+    padding-bottom: var(--padding);
+    border-radius: var(--btn-radius);
+}
+
 .timezone_header {
     font-family: var(--display-font);
     font-size: var(--header-size);

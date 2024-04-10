@@ -18,6 +18,12 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
     for (let i = 0; i < pollutantCount; i++) {
       let circle = document.createElement('div');
       circle.classList.add(pollutantClass, 'pollutant');
+
+      let tag = document.createElement('div');
+      tag.classList.add('data',pollutantClass)
+      tag.textContent = 'test';
+
+      circle.appendChild(tag);
       
       //Animate circles
       circle.style.left = Math.random() * window.innerWidth + 'px';
@@ -36,9 +42,10 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
   };
 
   //Function to show data 
-  function showData(data, pollutantName, containerId, pollutantClass){
-    var pollutantCount = data.current[pollutantName];
-    // need to finish this
+  const showData = (data, pollutantName, containerId) =>{
+    
+    let pollutantData = document.getElementById(containerId);
+    pollutantData.innerHTML = data.current[pollutantName] + " " + data.current_units[pollutantName];
   };
 
 function fetchData(lat,lng) {
@@ -55,43 +62,28 @@ function fetchData(lat,lng) {
     let formattedTimezone = data.timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
     timeZone.innerHTML = formattedTimezone;
 
+    // createPollutant function: Data, Pollutant Name, Container Id, Pollutant Class
+    // showData function: Data, Pollutant Name, Container Id
 
-    //PM2.5 Pollutant: Data, Pollutant Name, Container Id, Pollutant Class
+    //PM2.5: Create Pollutant + Show Data with units
     createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
+    showData (data, 'pm2_5', 'pm2_5_data');
 
-    // let pm2_5 = data.current.pm2_5;
-    // let pm2_5Unit = data.current_units.pm2_5;
-    // console.log('pm2.5', pm2_5, pm2_5Unit);
-
-    //Ozone: Data, Pollutant Name, Container Id, Pollutant Class
+    //Ozone: Create Pollutant + Show Data with units
     createPollutant (data, 'ozone', 'ozone_count', 'ozone');
+    showData (data, 'ozone', 'ozone_data');
 
-    // let ozone = data.current.ozone;
-    // let ozoneUnit = data.current_units.ozone;
-    // console.log('ozone', ozone, ozoneUnit);
-
-
-    //Carbon Monoxide: Data, Pollutant Name, Container Id, Pollutant Class 
+    //Carbon Monoxide: Create Pollutant + Show Data with units
     createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
+    showData (data, 'carbon_monoxide', 'cm_data');
 
-    // let carbMon = data.current.carbon_monoxide;
-    // let carbMonUnit = data.current_units.carbon_monoxide;
-    // console.log('carbon monoxide', carbMon, carbMonUnit);
-
- 
     //Nitrogen Dioxide: Data, Pollutant Name, Container Id, Pollutant Class 
     createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
-
-    // let nitroD = data.current.nitrogen_dioxide;
-    // let nitroDUnit = data.current_units.nitrogen_dioxide;
-    // console.log('nitrogen dioxide', nitroD, nitroDUnit);
+    showData (data, 'nitrogen_dioxide', 'nd_data');
 
     //Sulphur Dioxide:Data, Pollutant Name, Container Id, Pollutant Class  
     createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
-
-    // let sulphD = data.current.sulphur_dioxide;
-    // let sulphDUnit = data.current_units.sulphur_dioxide;
-    // console.log('sulphur dioxide', sulphD, sulphDUnit);
+    showData (data, 'sulphur_dioxide', 'sd_data');
 
     //USA AQI
     let aqi = data.current.us_aqi;
@@ -129,17 +121,6 @@ function fetchData(lat,lng) {
   });
 }
 
-
-	//Button add remove on scroll position
-	const btnTop = document.querySelector(".top");
-
-	window.addEventListener("scroll", () => {
-		if (window.scrollY > 80) {
-			btnTop.classList.add("scrolled");
-		} else {
-			btnTop.classList.remove("scrolled");
-		}
-	});
 
 // lat and lng for other pages 
 // if (!document.URL.includes("country.html")) {
