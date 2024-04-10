@@ -91,11 +91,8 @@ h1 {
 }
 
 .data {
-    /* display: flex;
-    flex-direction: row; */
-    padding-top: var(--padding);
-    padding-bottom: var(--padding);
-    border-radius: var(--btn-radius);
+    display: flex;
+    flex-direction: row;
 }
 
 .timezone_header {

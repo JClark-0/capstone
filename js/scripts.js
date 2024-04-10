@@ -18,12 +18,6 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
     for (let i = 0; i < pollutantCount; i++) {
       let circle = document.createElement('div');
       circle.classList.add(pollutantClass, 'pollutant');
-
-      let tag = document.createElement('div');
-      tag.classList.add('data',pollutantClass)
-      tag.textContent = 'test';
-
-      circle.appendChild(tag);
       
       //Animate circles
       circle.style.left = Math.random() * window.innerWidth + 'px';
