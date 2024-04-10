@@ -1,13 +1,8 @@
 
 
-// Getting your lat and lng based on location saving to variable 
-navigator.geolocation.getCurrentPosition((position) => {
-  lat =(position.coords.latitude);
-  lng = (position.coords.longitude);
-  fetchData(lat, lng);
-  // console.log(lat);
-  // console.log(lng);
-});
+
+
+
 
 //Function to create the circles based on pollutant count
 const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
@@ -114,6 +109,28 @@ function fetchData(lat,lng) {
     console.error('Error', error);
   });
 }
+    // Getting your lat and lng based on location saving to variable 
+  document.addEventListener('DOMContentLoaded', () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      lat =(position.coords.latitude);
+      lng = (position.coords.longitude);
+      fetchData(lat, lng);
+    });
+
+    // Button click event to change location
+    document.getElementById('nxt_btn').addEventListener('click', () => {
+      const predeterminedLat = 40.014984; // Example latitude
+      const predeterminedLng = -105.270546; // Example longitude
+      fetchData(predeterminedLat, predeterminedLng);
+    });
+  });
+
+
+  //     fetch('json/data.json')
+	// .then(response => response.json())
+	// .then(data => {
+	// 	console.log(data)
+	// })
 
 
 // lat and lng for other pages 
@@ -125,12 +142,7 @@ function fetchData(lat,lng) {
 //   fetchData(lat, lng);
 // }
 
-// fetch('json/data.json')
-// 	.then(response => response.json())
-// 	.then(data => {
-// 		// And passes the data to something
-// 		console.log(data)
-// 	})
+
 
 // add saved lat and lng to add to list of places 
 // add last updated 
