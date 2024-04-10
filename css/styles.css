@@ -181,7 +181,7 @@ h1 {
     /* display: flex;
     flex-wrap: wrap; */
     /* height: 100dvh; */
-    height: calc(100dvh - 350px);
+    height: calc(100dvh - 340px);
     overflow: hidden;
     position: relative;
     flex-grow: 1;
