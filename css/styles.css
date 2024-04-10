@@ -4,10 +4,10 @@
 :root {
     /* Fonts */
     --display-font: "Space Grotesk", sans-serif;
-    --display-size: 40px;
+    --display-size: 36px;
     --header-size: calc(var(--base-size)*1.5);
     --body-font: "Poppins", sans-serif;
-    --base-size: 16px;
+    --base-size: 15px;
     --tag-font: monospace;
     --tag-size: 14px;
 
@@ -109,7 +109,6 @@ h1 {
 }
 
 .data_list {
-    margin-top: 20px;
     background-color: white; 
     border-radius: var(--radius) 0 0 var(--radius);
     padding: calc(var(--padding)*2);
@@ -159,24 +158,6 @@ h1 {
     font-weight: 500;
 }
 
-.pollutant_view {
-    /* display: flex;
-    flex-wrap: wrap; */
-    height: calc(100dvh - 200px);
-    overflow: hidden;
-    position: relative;
-    flex-grow: 1;
-    /* outline: 1px white solid; */
-
-}
-.pollutant {
-    height: var(--pollutant-size);
-    width: var(--pollutant-size);
-    border-radius: 50%;
-    position: absolute;
-    /* mix-blend-mode: color-dodge; */
-}
-
 .pm2_5 {
     background: var(--pm2_5);
 }
@@ -195,6 +176,27 @@ h1 {
 .sd {
     background: var(--sd);
 }
+
+.pollutant_view {
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* height: 100dvh; */
+    height: calc(100dvh - 350px);
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    margin-top: calc(var(--padding) * 4);
+    /* outline: 1px white solid; */
+
+}
+.pollutant {
+    height: var(--pollutant-size);
+    width: var(--pollutant-size);
+    border-radius: 50%;
+    position: absolute;
+    /* mix-blend-mode: color-dodge; */
+}
+
 .pollutant {
     height: 25px;
     width:25px;
@@ -202,21 +204,22 @@ h1 {
 }
 .pollution_list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: calc(var(--padding)*3);
-    height: calc(100dvh - 200px);
-    overflow-y: auto;
+    /* height: calc(100dvh - 220px - (var(--gutters)*2)); */
+    overflow-x: auto;
+    margin-top: calc(var(--padding) * 4);
 }
 .pollution_info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: calc(var(--padding)*3);
     background-color:white;
     border-radius: var(--radius);
     /* Add these to variables */
-    height: 150px;
-    max-width: 320px;
+    /* height: 150px; */
+    max-width: 100%;
 }
 
 .pollutant_title {
@@ -224,6 +227,7 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
+    width: 16rem;
 }
 
 .pollutant_tag {
@@ -310,14 +314,44 @@ h1 {
   @media (min-width: 720px) {
 
     :root {
+        --display-size: 48px;
+        --header-size: calc(var(--base-size)*1.8);
         --gutters: 16px;
     }
 
     main {
         flex-direction: row;
         align-items: flex-start;
-        gap: var(--gutters);
+        gap: calc(var(--gutters)*2);
         /* justify-content: space-between; */
+    }
+
+    .pollutant_view, .pollution_list {
+        height: calc(100dvh - 260px);
+    }
+
+    .pollution_list {
+        flex-direction: column;
+        overflow-y: auto;
+        max-width: 320px;
+    }
+
+    .pollutant_title {
+        width: 100%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+
+    :root {
+        --display-size: 58px;
+        --header-size: calc(var(--base-size)*2);
+        --body-size: 18px;
+        --gutters: 12px;
+    }
+
+    .pollutant_view, .pollution_list {
+        height: calc(100dvh - 260px);
     }
   }
 
