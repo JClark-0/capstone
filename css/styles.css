@@ -65,7 +65,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-top: var(--gutters);
-    margin-bottom: var(--gutters);
+    margin-bottom: calc(var(--gutters)*2);
     align-items: center;
 }
 
@@ -84,6 +84,16 @@ body {
     border-radius: var(--btn-radius);
 }
 
+button {
+    background-color: var(--btn-color);
+    border-radius: var(--btn-radius);
+    padding-left: calc(var(--padding)*2);
+    padding-right: calc(var(--padding)*2);
+    position: absolute; 
+    left: 0;
+    bottom: 0;
+}
+
 h1 {
     font-family: var(--display-font);
     font-size: var(--display-size);
@@ -98,11 +108,9 @@ h1 {
 
 .timezone_header {
     font-family: var(--display-font);
-    font-size: var(--header-size);
+    font-size: var(--display-size);
     font-weight: 400;
-    position: absolute; 
-    left: 0;
-    bottom: 0;
+    line-height: 120%;
 
 }
 .aqi_box {
@@ -139,7 +147,7 @@ h1 {
 .pollutant_view {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100dvh - var(--gutters)*14);
+    height: calc(100dvh - 200px);
     overflow: hidden;
     position: relative;
     /* outline: 1px white solid; */
@@ -149,6 +157,7 @@ h1 {
     height: var(--pollutant-size);
     width: var(--pollutant-size);
     border-radius: 50%;
+    position: absolute;
     /* mix-blend-mode: color-dodge; */
 }
 

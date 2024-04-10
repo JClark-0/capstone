@@ -17,12 +17,12 @@
 	<body>
 		<nav>
 			<ol class="nav_bar">
-				<a href="index.html"><li class="btn active">Your Location</li></a>
+				<a href="index.html"><li class="btn active">Pollution Pulse</li></a>
 				<a href="about.html"><li class="btn">About</li></a>
 			</ol>
 		</nav>
 		<main>
-			<h1>Pollution Pulse</h1>
+			<h1 class="timezone_header">Today in<br><span id="timezone">Loading...</span></h1>
 
 			<div class="pollutant_view">
 				<div id="pm2_5_count"></div>
@@ -31,7 +31,7 @@
 				<div id="nd_count"></div>
 				<div id="sd_count"></div>
 				<div>
-					<h2 class="timezone_header add_blur">Today in<br><span id="timezone">Loading...</span></h2>
+					<button id="nxt_btn">Next</button>
 					<div class="aqi_box add_blur">
 						<h2 id="aqi"></h2>
 						<h3 id="condition"> HOLD YOUR BREATH </h3>
@@ -58,7 +58,6 @@
 				<h3>Sulphur Dioxide: </h3>
 				<p id ="sd_data"><p>
 			</div>
-			<button id="nxt_btn">Next</button>
 		</main>
 		<!-- script always before closing body tag -->
 		<script src="js/scripts.js"></script>

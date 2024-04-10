@@ -1,42 +1,5 @@
 
 
-
-
-
-
-//Function to create the circles based on pollutant count
-const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
-  const pollutantCount = data.current[pollutantName];
-  const pollutantCountElement = document.getElementById(containerId);
-
-  //Loop through the pollutant count 
-    for (let i = 0; i < pollutantCount; i++) {
-      let circle = document.createElement('div');
-      circle.classList.add(pollutantClass, 'pollutant');
-      
-      //Animate circles
-      circle.style.left = Math.random() * window.innerWidth + 'px';
-      circle.style.top = Math.random() * window.innerHeight + 'px';
-
-      let directionX = Math.random(); 
-      let directionY = Math.random(); 
-
-      circle.style.animation = `moveSpore ${Math.random() * 40 + 20}s linear infinite`;
-      circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-      
-      //Display
-      pollutantCountElement.appendChild(circle);
-      
-    }
-  };
-
-  //Function to show data 
-  const showData = (data, pollutantName, containerId) =>{
-    
-    let pollutantData = document.getElementById(containerId);
-    pollutantData.innerHTML = data.current[pollutantName] + " " + data.current_units[pollutantName];
-  };
-
 function fetchData(lat,lng) {
   let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
   fetch(urlPollen)
@@ -44,7 +7,7 @@ function fetchData(lat,lng) {
   .then((data) => { // Lets do stuff with the data now
 
     // Just to see what is going on
-    console.log(data); 
+    // console.log(data); 
 
     // Location
     let timeZone = document.getElementById('timezone');
@@ -79,7 +42,7 @@ function fetchData(lat,lng) {
     let aqi_num = document.getElementById('aqi');
     aqi_num.innerHTML = aqi +' AQI';
 
-    console.log('USA AQI', aqi);
+    // console.log('USA AQI', aqi);
 
 
     let conditionText = '';
@@ -109,28 +72,63 @@ function fetchData(lat,lng) {
     console.error('Error', error);
   });
 }
-    // Getting your lat and lng based on location saving to variable 
-  document.addEventListener('DOMContentLoaded', () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      lat =(position.coords.latitude);
-      lng = (position.coords.longitude);
-      fetchData(lat, lng);
-    });
 
-    // Button click event to change location
-    document.getElementById('nxt_btn').addEventListener('click', () => {
-      fetch('json/data.json')
-        .then(response => response.json())
-        .then(data => {
-          data.forEach(location => {
-            const lat = location.lat
-            const lng = location.lng
-            fetchData(lat, lng);
-          });
-      })
-      fetchData(lat, lng);
-    });
+
+// Getting your lat and lng based on location saving to variable 
+document.addEventListener('DOMContentLoaded', () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    lat =(position.coords.latitude);
+    lng = (position.coords.longitude);
+    fetchData(lat, lng);
   });
+
+  // Button click event to change location
+  document.getElementById('nxt_btn').addEventListener('click', () => {
+    fetch('json/data.json')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(location => {
+          const lat = location.lat
+          const lng = location.lng
+          fetchData(lat, lng);
+        });
+    })
+    fetchData(lat, lng);
+  });
+});
+
+//Function to create the circles based on pollutant count
+const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
+  const pollutantCount = data.current[pollutantName];
+  const pollutantCountElement = document.getElementById(containerId);
+
+  //Loop through the pollutant count 
+    for (let i = 0; i < pollutantCount; i++) {
+      let circle = document.createElement('div');
+      circle.classList.add(pollutantClass, 'pollutant');
+      
+      //Animate circles
+      circle.style.left = Math.random() * window.innerWidth + 'px';
+      circle.style.top = Math.random() * window.innerHeight + 'px';
+
+      let directionX = Math.random(); 
+      let directionY = Math.random(); 
+
+      circle.style.animation = `moveSpore ${Math.random() * 40 + 20}s linear infinite`;
+      circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
+      
+      //Display
+      pollutantCountElement.appendChild(circle);
+      
+    }
+  };
+
+  //Function to show data 
+  const showData = (data, pollutantName, containerId) =>{
+    
+    let pollutantData = document.getElementById(containerId);
+    pollutantData.innerHTML = data.current[pollutantName] + " " + data.current_units[pollutantName];
+  };
 
 
 
