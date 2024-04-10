@@ -91,6 +91,7 @@ h1 {
 }
 
 .data {
+    margin-top: var(--padding);
     display: flex;
     flex-direction: row;
 }
