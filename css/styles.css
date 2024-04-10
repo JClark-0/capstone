@@ -124,7 +124,7 @@ h1 {
     font-family: var(--display-font);
     font-size: var(--display-size);
     font-weight: 400;
-    line-height: 120%;
+    line-height: 110%;
 
 }
 .aqi_box {
