@@ -6,6 +6,8 @@ function fetchData(lat,lng) {
   .then((response) => response.json()) // Return it as JSON data
   .then((data) => { // Lets do stuff with the data now
 
+    document.documentElement.style.setProperty('--on_load', 100);
+
     // Just to see what is going on
     // console.log(data); 
 
@@ -53,6 +55,7 @@ function fetchData(lat,lng) {
       // console.log('Condition: Good');
     } else if ( aqi >= 51 && aqi <= 100) {
       conditionText = 'Moderate';
+      document.documentElement.style.setProperty('--pm2_5', 'green')
       // console.log('Condition: Moderate');
     } else if (aqi >= 101 && aqi <= 150) {
       conditionText = 'Unhealthy(for senstive groups';

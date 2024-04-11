@@ -28,13 +28,16 @@
     --btn-color: rgb(243, 196, 57);
 
     /* Pollutant Formatting */
-    --pm2_5: rgb(233, 240, 111);
-    --ozone: rgb(78, 198, 9);
-    --cm: rgb(69, 224, 100);
-    --nd: rgb(218, 165, 6);
-    --sd: rgb(4, 86, 11);   
+    --pm2_5: grey; /* rgb(233, 240, 111); */
+    --ozone: grey; /*  rgb(78, 198, 9); */
+    --cm: grey;/*rgb(69, 224, 100); */
+    --nd: grey; /*rgb(218, 165, 6); */
+    --sd: grey; /*rgb(4, 86, 11);    */
 
     --pollutant-size:35px;
+
+    /* Before Fetch  */
+    --on_load: 0;
     
     /* good colors */
     /* --grass-bg: rgb(167, 221, 75); 
@@ -97,6 +100,7 @@ button {
     position: absolute; 
     left: 0;
     bottom: 0;
+    opacity: var(--on_load);
 }
 
 h1 {
@@ -248,6 +252,7 @@ h1 {
     flex-direction: column;
     text-align: right;
     font-weight: 500;
+    opacity: var(--on_load);
 }
 
 .pollutant_units {
