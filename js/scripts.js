@@ -1,5 +1,3 @@
-// `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`
-
 
 let database = [];
 class locationObject {
@@ -37,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
           fetchAndSave(lat, lng);
         });
     })
-  });
+});
 
 // ------- Push data to database ------- 
 function fetchAndSave(lat,lng){
@@ -152,7 +150,7 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
       pollutantCountElement.appendChild(circle);
       
     }
-  };
+};
 
 // ------- Function: Show pollutant data ------- 
   const showData = (data, pollutantName, containerId, unitId) =>{
@@ -162,7 +160,7 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
 
     let pollutantUnit = document.getElementById(unitId);
     pollutantUnit.innerHTML = data.current_units[pollutantName];
-  };
+};
 
 // ------- Click to Next Location ------- 
 const nextLocation = document.getElementById('nxt_btn');
