@@ -1,4 +1,4 @@
-
+// `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`
 
 
 let database = [];
@@ -12,10 +12,11 @@ class locationObject {
 
 // Getting your lat and lng based on location saving to variable 
 document.addEventListener('DOMContentLoaded', () => {
+
   navigator.geolocation.getCurrentPosition((position) => {
     lat =(position.coords.latitude);
     lng = (position.coords.longitude);
-    fetchData(lat, lng);
+    fetchData(lat, lng); 
   });
 
   // Button click event to change location
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 function fetchAndSave(lat,lng){
-  let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
+  let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,ammonia&hourly=us_aqi,us_aqi_pm2_5,us_aqi_pm10,us_aqi_nitrogen_dioxide,us_aqi_carbon_monoxide,us_aqi_ozone,us_aqi_sulphur_dioxide&timezone=auto&past_hours=1&forecast_days=1&forecast_hours=1`;
   fetch(urlPollen)
   .then((response) => response.json()) // Return it as JSON data
   .then((data) => { // Lets do stuff with the data now
@@ -104,7 +105,7 @@ function renderOnScreen(data){
     } else if (aqi >= 101 && aqi <= 150) {
       conditionText = 'Unhealthy(for senstive groups';
       // console.log('Condition: Unhealthy(for senstive groups)');
-    } else if (aqi >= 101 && aqi <= 150) {
+    } else if (aqi >= 151 && aqi <= 200) {
       conditionText = 'Unhealthy';
       // console.log('Condition: Unhealthy');
     } else if (aqi >= 201 && aqi <= 300) {
@@ -118,13 +119,14 @@ function renderOnScreen(data){
 }
 
 function fetchData(lat,lng) {
-  let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timezone=auto`;
+  let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,ammonia&hourly=us_aqi,us_aqi_pm2_5,us_aqi_pm10,us_aqi_nitrogen_dioxide,us_aqi_carbon_monoxide,us_aqi_ozone,us_aqi_sulphur_dioxide&timezone=auto&past_hours=1&forecast_days=1&forecast_hours=1`;
   fetch(urlPollen)
   .then((response) => response.json()) // Return it as JSON data
   .then((data) => { // Lets do stuff with the data now
 
     database.splice(0, 0, data);
     renderOnScreen(database[0]);
+    console.log(data);
 
     // document.documentElement.style.setProperty('--on_load', 100);
 
@@ -228,7 +230,7 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
     }
   };
 
-  //Function to show data 
+//Function to show data 
   const showData = (data, pollutantName, containerId, unitId) =>{
     
     let pollutantData = document.getElementById(containerId);
@@ -238,9 +240,9 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
     pollutantUnit.innerHTML = data.current_units[pollutantName];
   };
 
+
 const nextLocation = document.getElementById('nxt_btn');
 let currentLocationIndex = 0;
-
 nextLocation.onclick = () => {
   if (currentLocationIndex < database.length-1){
     currentLocationIndex++;
