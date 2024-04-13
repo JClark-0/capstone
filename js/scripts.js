@@ -168,17 +168,29 @@ const showData = (data, pollutantName, containerId, unitId) =>{
     pollutantUnit.innerHTML = data.current_units[pollutantName];
 };
 
-// ------- Click to Next Location ------- 
+// ------- Location Controll ------- 
 const nextLocation = document.getElementById('nxt_btn');
+const currentLocation = document.getElementById('loc_btn');
 let currentLocationIndex = 0;
+
 nextLocation.onclick = () => {
   if (currentLocationIndex < database.length-1){
     currentLocationIndex++;
+    currentLocation.classList.remove("control_btn_active");
   } else {
     currentLocationIndex = 0;
+    nextLocation.classList.remove("control_btn_active");
+    currentLocation.classList.add("control_btn_active");
   }
   console.log(currentLocationIndex);
   renderOnScreen(database[currentLocationIndex]);
+}
+
+currentLocation.onclick = () => {
+  currentLocationIndex = 0;
+  renderOnScreen(database[currentLocationIndex]);
+  currentLocation.classList.add("control_btn_active");
+  nextLocation.classList.remove("control_btn_active");
 }
 
 

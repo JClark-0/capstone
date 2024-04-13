@@ -94,14 +94,35 @@ main {
 }
 
 button {
-    background-color: var(--btn-color);
+    /* background-color: var(--btn-color); */
     border-radius: var(--btn-radius);
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
+    opacity: var(--on_load);
+}
+
+.sub_btn{
+    background-color: white;
+    padding-left: calc(var(--padding)*2);
+    padding-right: calc(var(--padding)*2);
+    padding-top: var(--padding);
+    padding-bottom: var(--padding);
+    border-radius: var(--btn-radius);
+}
+
+.sub_btn:hover {
+    background-color: var(--btn-color);
+}
+
+.control_btn_active {
+    background-color: var(--btn-color);
+
+}
+
+.location_control {
     position: absolute; 
     left: 0;
     bottom: 0;
-    opacity: var(--on_load);
 }
 
 h1 {
@@ -267,15 +288,6 @@ h1 {
     border-radius: var(--radius);
     padding: var(--padding);
 }
-
-/* .nxt_btn {
-    background: darkgreen;
-    color: white;
-    position: absolute;
-    right: 0;
-    margin-right: calc(var(--gutters)*2);
-} */
-
 
 /* ABOUT PAGE */
 
