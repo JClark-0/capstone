@@ -30,6 +30,7 @@
 
     /* Pollutant Formatting */
     --pm2_5: grey; /* rgb(233, 240, 111); */
+    --pm10: grey; 
     --ozone: grey; /*  rgb(78, 198, 9); */
     --cm: grey;/*rgb(69, 224, 100); */
     --nd: grey; /*rgb(218, 165, 6); */
@@ -185,6 +186,10 @@ h1 {
 .pm2_5 {
     background: var(--pm2_5);
     opacity: 80%;
+}
+
+.pm10 {
+    background-color: var(--pm10);
 }
 .ozone{
     background: var(--ozone);

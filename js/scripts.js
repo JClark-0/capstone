@@ -91,6 +91,9 @@ function renderOnScreen(data){
   //PM2.5: 
   createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
   showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+  //PM10:
+  createPollutant (data, 'pm10', 'pm10_count', 'pm10');
+  showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
   //Ozone: 
   createPollutant (data, 'ozone', 'ozone_count', 'ozone');
   showData (data, 'ozone', 'ozone_data','ozoneUnitId');
@@ -113,9 +116,16 @@ function renderOnScreen(data){
   let conditionText = '';
   if (aqi <= 50){
     conditionText = 'Good';
+    document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
+    document.documentElement.style.setProperty('--pm10', '#9CE73A')
+    document.documentElement.style.setProperty('--ozone', '#B0F35C')
+    document.documentElement.style.setProperty('--cm', '#CAF98D')
+    document.documentElement.style.setProperty('--sd', '#93D77B')
+    document.documentElement.style.setProperty('--nd', '#51A733')
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
     document.documentElement.style.setProperty('--pm2_5', '#187D40')
+    document.documentElement.style.setProperty('--pm10', '#187D42')
     document.documentElement.style.setProperty('--ozone', '#1CB659')
     document.documentElement.style.setProperty('--cm', '#53D5C5')
     document.documentElement.style.setProperty('--sd', '#63EC9A')
