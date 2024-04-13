@@ -20,6 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
+// ------- Show Location Name ------- 
+const showLocation = (lat, lng) => {
+  const options = { method: 'GET', headers: { accept: 'application/json' } };
+  fetch(`https://us1.locationiq.com/v1/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14&accept-language=en&key=pk.83485c19ebc3983a826192780bdd4e9c`, options)
+    .then(response => response.json())
+    .then(response => { 
+      console.log(response);
+      let locationName = document.getElementById('locationId');
+      if (locationName) {
+        locationName.innerHTML = response.address.city;
+      } else {
+        console.error(`Element with id '${locationId}' not found.`);
+      }
+    })
+    .catch(err => console.error(err));
+};
+
+
 // ------- Create lat lng Database -------
 let database = [];
 
@@ -42,6 +60,7 @@ function fetchData(lat,lng) {
 
     database.splice(0, 0, data);
     renderOnScreen(database[0]);
+    console.log(database);
   })
   .catch((error) => {
     console.error('Error', error);
@@ -59,10 +78,12 @@ function renderOnScreen(data){
   // Changes value on variable 
   document.documentElement.style.setProperty('--on_load', 100);
 
-  // ------- Location ------- 
+  showLocation (lat, lng);
+
   let timeZone = document.getElementById('timezone');
   let formattedTimezone = data.timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
   timeZone.innerHTML = formattedTimezone;
+
 
   // ------- Calling Pollutant Functions ------- 
   // createPollutant function: Data, Pollutant Name, Container Id, Pollutant Class
@@ -109,16 +130,6 @@ function renderOnScreen(data){
     conditionText = 'Hazardous';
   }
   document.getElementById('condition').textContent = conditionText;
-}
-
-// ------- Function: Show Location Name ------- 
-function getLocation(lat,lng){
-  const options = {method: 'GET', headers: {accept: 'application/json'}};
-
-fetch(`https://us1.locationiq.com/v1/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14&accept-language=en&key=pk.83485c19ebc3983a826192780bdd4e9c`, options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
 }
 
 // -------  Function: Circles from pollutant count ------- 
