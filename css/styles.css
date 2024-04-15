@@ -91,6 +91,7 @@ main {
     padding-right: var(--padding);
 }
 
+
 .btn:not(.active):hover {
     text-decoration: underline;
     cursor: pointer;
@@ -392,6 +393,7 @@ footer {
     padding-top: calc(var(--gutters)*2);
     padding-bottom: calc(var(--gutters)*2);
     border-radius: var(--radius);
+    vertical-align: middle;
 }
 
 
