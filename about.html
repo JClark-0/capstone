@@ -15,10 +15,16 @@
         <div id="BTT"></div>
         <a href="#BTT" class="top">↑</a>
 		<nav>
-			<ol class="nav_bar">
-				<a href="index.html"><li class="btn">Pollution Pulse</li></a>
-				<a href="about.html"><li class="btn active">About</li></a>
-			</ol>
+            <nav>
+                <ol class="nav_bar">
+                    <li>
+                        <a class="logo_placement btn" href="index.html"><img class="logo" src="assets/logo3.svg"><p>Pollution Pulse</p></a>
+                    </li>
+                    <li>
+                        <a class="btn active" href="about.html">About</a>
+                    </li>
+                </ol>
+            </nav>
 		</nav>
         <header>
             <h1>About</h1>
@@ -28,13 +34,22 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
             </div>
             <div>
-                <h2>Acknowledgements</h2>
-                <p>[Links to API]</p>
+                <h2 class="about_title">Acknowledgements</h2>
+                <ol>
+                    <li>Utilizes data from <a class="inline_link" href="https://open-meteo.com/">Open-Meteo</a> an open-source weather API.</li>
+                    <li>Special thanks to <a class="inline_link" href="https://github.com/mfehrenbach">Michael Fehrenbach</a> & <a  class="inline_link" href="https://github.com/eli8527">
+                        Eric Li</a> for their professional insights and teachings over the course of the project.</li>
+                </ol>
             </div>
-        </main>
-        <footer>
-            <h3>this is a footer</h3>
-        </footer>
+            </main>
+            <footer>
+                <div>
+                    <p>Pollution Pulse by JC Clark</p>
+       
+                </div>
+                <div>
+                    <p>April 2024</p>
+                </div>
         <script src="js/about.js"></script>
     </body>
 </html>

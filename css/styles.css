@@ -79,6 +79,18 @@ main {
     align-items: center;
 }
 
+.logo_placement {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+
+}
+
+.logo {
+    width: 22px;
+    padding-right: var(--padding);
+}
+
 .btn:not(.active):hover {
     text-decoration: underline;
     cursor: pointer;
@@ -135,8 +147,26 @@ button {
 }
 
 .line_icon {
-    width: 24px;
+    width: 22px;
     vertical-align: middle;
+}
+
+.inline_link {
+    border: 1px black solid;
+    border-radius: var(--btn-radius);
+    padding-left: calc(var(--padding)*2);
+    padding-right: calc(var(--padding)*2);
+}
+.inline_link::after {
+    content: ' \2197'; 
+    font-size: 12px;
+    font-weight: 700;
+}
+.inline_link:hover {
+    /* text-decoration: underline; */
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
 
 h1 {
@@ -270,7 +300,7 @@ h1 {
     border-radius: var(--radius);
     /* Add these to variables */
     /* height: 150px; */
-    max-width: 100%;
+    max-width: 100%;    
 }
 
 .pollutant_title {
@@ -341,8 +371,28 @@ h1 {
     flex-direction: column;
     gap: calc(var(--gutters)*4);
     margin-top: calc(var(--gutters)*4);
+    margin-bottom: calc(var(--gutters)*4);
 }
 
+.about_title {
+    font-weight: 500;
+    margin-bottom: var(--gutters);
+}
+
+footer {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    /* gap: var(--gutters); */
+    justify-content: space-between;
+    padding-right: var(--gutters);
+    padding-left: var(--gutters);
+    padding-top: calc(var(--gutters)*2);
+    padding-bottom: calc(var(--gutters)*2);
+    border-radius: var(--radius);
+}
 
 
 @keyframes moveSpore {
