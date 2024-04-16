@@ -97,6 +97,10 @@ main {
     cursor: pointer;
 }
 
+.btn:hover {
+    transform: scale(1.02);
+}
+
 .active {
     background-color: var(--btn-color);
     /* font-weight: 500; */
@@ -113,6 +117,8 @@ button {
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
     opacity: var(--on_load);
+    transition: all .4s;
+
 }
 
 .sub_btn{
@@ -127,11 +133,15 @@ button {
     gap: calc(var(--padding)/2);
     align-items: center;
     justify-content: center;
+
+
+
 }
 
 .sub_btn:hover {
     background-color: var(--btn-color);
     cursor: pointer;
+    transform-origin: center;
 }
 
 .control_btn_active {
@@ -162,9 +172,15 @@ button {
     content: ' \2197'; 
     font-size: 12px;
     font-weight: 700;
+    transition: all .8s;
+    
+}
+
+.inline_link:hover::after {
+    font-weight: 700;
+    transform: rotate(10deg);
 }
 .inline_link:hover {
-    /* text-decoration: underline; */
     cursor: pointer;
     background-color: black;
     color: white;
@@ -216,6 +232,41 @@ h1 {
     font-weight: 500;
     text-align: right;
 }
+.aqi_details {
+    /* display: flex;
+    flex-direction: row; */
+    border-radius: var(--radius);
+    opacity: var(--on_load);
+    background-color: white;
+    padding: calc(var(--padding)*3);
+}
+
+.expanded {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    width: 100%;
+}
+
+.expanded {
+    transition: all 0.5s; 
+}
+
+.minimized {
+    width: 120px;
+    transition: all 0.5s; 
+}
+
+.expanded .minimized {
+    display: none;
+}
+
+.minimized .expanded {
+    display: none;
+}
+
+
 
 #condition {
     font-size: var(--base-size);
@@ -342,6 +393,35 @@ h1 {
     padding: var(--padding);
 }
 
+.help_scroll {
+    background-color: var(--btn-color);
+    border-radius: var(--btn-radius);
+    height: 20px;
+    /* align-self: center; */
+    position: absolute;
+    right: 0;
+    margin-top: var(--gutters);
+    margin-right: calc(var(--gutters)*4);
+    /* opacity: 50%; */
+    transition: all 1s;
+    transform: scale(1.04);
+    display: none;
+}
+
+.pollution_list:hover .help_scroll {
+    animation: pulse 1s infinite;
+    display: block;
+
+}
+@keyframes pulse {
+    100% {
+    transform: scale(1);
+    }
+    0% {
+    transform: scale(.91);
+    }
+}
+
 /* ABOUT PAGE */
 
 .top {
@@ -378,6 +458,13 @@ h1 {
 .about_title {
     font-weight: 500;
     margin-bottom: var(--gutters);
+}
+
+.about_text {
+    display: flex; 
+    flex-direction: column;
+    gap: calc(var(--padding)*2);
+    max-width: 45ch;
 }
 
 footer {
@@ -452,6 +539,10 @@ footer {
     .pollutant_view, .pollution_list {
         height: calc(100dvh - 260px);
     }
+
+    /* .aqi_details {
+        max-width: 90%;
+    } */
   }
 
 

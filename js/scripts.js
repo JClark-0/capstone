@@ -116,30 +116,40 @@ function renderOnScreen(data){
   let conditionText = '';
   if (aqi <= 50){
     conditionText = 'Good';
+    adviceText = 'It’s a great day to be active outside.';
+
     document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
     document.documentElement.style.setProperty('--pm10', '#9CE73A')
     document.documentElement.style.setProperty('--ozone', '#B0F35C')
     document.documentElement.style.setProperty('--cm', '#CAF98D')
     document.documentElement.style.setProperty('--sd', '#93D77B')
     document.documentElement.style.setProperty('--nd', '#51A733')
+
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
+    adviceText = 'It’s good day to be active outside. Sensitive individuals may experience increased symptoms.';
     document.documentElement.style.setProperty('--pm2_5', '#187D40')
     document.documentElement.style.setProperty('--pm10', '#187D42')
     document.documentElement.style.setProperty('--ozone', '#1CB659')
     document.documentElement.style.setProperty('--cm', '#53D5C5')
     document.documentElement.style.setProperty('--sd', '#63EC9A')
     document.documentElement.style.setProperty('--nd', '#9DE6F6')
+
   } else if (aqi >= 101 && aqi <= 150) {
     conditionText = 'Unhealthy(for senstive groups)';
+    adviceText = 'Impacts from outdoor activities remains low for healthy people.';
   } else if (aqi >= 151 && aqi <= 200) {
     conditionText = 'Unhealthy';
+    adviceText = 'Everyone should limit prolonged outdoor activities today.';
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
+    adviceText = 'Everyone should consider moving activities indoors today.';
   } else if (aqi >= 301 && aqi <= 500) {
     conditionText = 'Hazardous';
+    adviceText = 'Everyone should avoid all physical activity outdoors today.';
   }
   document.getElementById('condition').textContent = conditionText;
+  document.getElementById('aqi_advice').textContent = adviceText
 }
 
 // -------  Function: Circles from pollutant count ------- 
@@ -178,7 +188,7 @@ const showData = (data, pollutantName, containerId, unitId) =>{
     pollutantUnit.innerHTML = data.current_units[pollutantName];
 };
 
-// ------- Location Controll ------- 
+// ------- Location Control ------- 
 const nextLocation = document.getElementById('nxt_btn');
 const currentLocation = document.getElementById('loc_btn');
 let currentLocationIndex = 0;
@@ -202,6 +212,22 @@ currentLocation.onclick = () => {
   currentLocation.classList.add("control_btn_active");
   nextLocation.classList.remove("control_btn_active");
 }
+
+// ------- Advice Control ------- 
+const minimizeButton = document.getElementById('minimize_button');
+const expandButton = document.getElementById('expand_button');
+const aqiDetails = document.querySelector('.aqi_details');
+
+minimizeButton.addEventListener('click', () => {
+    aqiDetails.classList.add('minimized');
+    aqiDetails.classList.remove('expanded');
+  });
+
+expandButton.addEventListener('click', () => {
+  aqiDetails.classList.remove('minimized');
+  aqiDetails.classList.add('expanded');
+
+});
 
 
 // add saved lat and lng to add to list of places 
