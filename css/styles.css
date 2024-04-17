@@ -239,6 +239,11 @@ h1 {
     opacity: var(--on_load);
     background-color: white;
     padding: calc(var(--padding)*3);
+    z-index: 2;
+}
+
+.aqi_details:hover {
+    transform: scale(1.01)
 }
 
 .expanded {
@@ -278,7 +283,7 @@ h1 {
     text-align: center;
 }
 
-#timezone {
+#locationId {
     font-weight: 500;
 }
 
@@ -537,7 +542,7 @@ footer {
     }
 
     .pollutant_view, .pollution_list {
-        height: calc(100dvh - 260px);
+        height: calc(100dvh - 280px);
     }
 
     /* .aqi_details {
