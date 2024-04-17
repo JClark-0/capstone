@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lat =(position.coords.latitude);
     lng = (position.coords.longitude);
     fetchData(lat, lng); 
+    showLocation (lat, lng);
   });
 
   fetch('json/data.json')
@@ -27,6 +28,7 @@ let database = [];
 
 // --- JSON Lat & Lng through API pushed to database ---
 function fetchAndSave(lat,lng){
+
   let urlPollen = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,ammonia&hourly=us_aqi,us_aqi_pm2_5,us_aqi_pm10,us_aqi_nitrogen_dioxide,us_aqi_carbon_monoxide,us_aqi_ozone,us_aqi_sulphur_dioxide&timezone=auto&past_hours=1&forecast_days=1&forecast_hours=1`;
   fetch(urlPollen)
   .then((response) => response.json())
@@ -41,10 +43,10 @@ function fetchData(lat,lng) {
   fetch(urlPollen)
   .then((response) => response.json())
   .then((data) => {
-
     database.splice(0, 0, data);
     renderOnScreen(database[0]);
     console.log(database);
+    
   })
   .catch((error) => {
     console.error('Error', error);
@@ -54,23 +56,23 @@ function fetchData(lat,lng) {
 // ------- Show Location Name ------- 
 const showLocation = (lat, lng) => {
   const options = { method: 'GET', headers: { accept: 'application/json' } };
-  fetch(`https://us1.locationiq.com/v1/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14&accept-language=en&key=pk.83485c19ebc3983a826192780bdd4e9c`, options)
+  fetch(`https://us1.locationiq.com/v1/reverse?lat=${lat}&lon=${lng}&format=json&key=pk.83485c19ebc3983a826192780bdd4e9c`, options)
     .then(response => response.json())
     .then(response => { 
       console.log(response);
       let locationName = document.getElementById('locationId');
-      if (locationName) {
-        locationName.innerHTML = response.address.state;
-      } else {
-        console.error(`Element with id '${locationId}' not found.`);
-      }
+        if (response.address.country.includes('United States of America')) {
+          locationName.innerHTML = response.address.state + ', ' + 'USA';
+          } else  {
+          locationName.innerHTML = response.address.state + ', ' + response.address.country;
+        }
     })
     .catch(err => console.error(err));
 };
 
 // ------- Render data on page -------
 function renderOnScreen(data){
-  
+  console.log(data);
   // Clear Pollutant circles 
   document.querySelectorAll('.pollutants').forEach(box => {
     box.innerHTML = ''; 
@@ -79,6 +81,7 @@ function renderOnScreen(data){
   // Changes value on variable 
   document.documentElement.style.setProperty('--on_load', 100);
 
+   // Show location based on Lat & Long (linked to API)
   showLocation (data.latitude, data.longitude);
 
   // let timeZone = document.getElementById('timezone');
