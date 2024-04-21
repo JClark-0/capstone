@@ -77,29 +77,33 @@ const showLocation = (lat, lng) => {
 
 // ------- Render data on page -------
 function renderOnScreen(data){
-  console.log(data);
+
+  // Changes value on variable (opacity)
+  document.documentElement.style.setProperty('--on_load', 100);
+
   // Clear Pollutant circles 
   document.querySelectorAll('.pollutants').forEach(box => {
     box.innerHTML = ''; 
   });
 
-  // Changes value on variable 
-  document.documentElement.style.setProperty('--on_load', 100);
-
    // Show location based on Lat & Long (linked to API)
   showLocation (data.realLatitude, data.realLongitude);
 
-  // let timeZone = document.getElementById('timezone');
-  // let formattedTimezone = data.timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
-  // timeZone.innerHTML = formattedTimezone;
-
-
   // ------- Calling Pollutant Functions ------- 
   
+  // Pollutant Objects 
+  const pollutants = [
+    { name: 'pm2_5', countId: 'pm2_5_count', styleClass: 'pm2_5', statId:'pm2_5_data', unitId:'pm2_5UnitId', infoBoxId:'pm2_5box' }
+  ]
+
+  pollutants.forEach(pollutant => {
+    createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass)
+  });
+
   //PM2.5: 
-  createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
-  showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
-  scrollPollutant('pm2_5_count', 'pm2_5box');
+  // createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
+  // showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+  // scrollPollutant('pm2_5_count', 'pm2_5box');
   //PM10:
   createPollutant (data, 'pm10', 'pm10_count', 'pm10');
   showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
@@ -168,43 +172,41 @@ function renderOnScreen(data){
 }
 
 // -------  Function: Circles from pollutant count ------- 
-const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
-  const pollutantCount = data.current[pollutantName];
-  const pollutantCountElement = document.getElementById(containerId);
+const createPollutant = (data, name, counttId, styleClass) => {
+  const pollutantCount = data.current[name];
+  const pollutantCountElement = document.getElementById(counttId);
 
   //Loop through the pollutant count 
-    for (let i = 0; i < pollutantCount; i++) {
-      let circle = document.createElement('div');
-      circle.classList.add(pollutantClass, 'pollutant');
-      
-      //Animate circles
-      circle.style.left = Math.random() * window.innerWidth + 'px';
-      circle.style.top = Math.random() * window.innerHeight + 'px';
+  for (let i = 0; i < pollutantCount; i++) {
+    let circle = document.createElement('div');
+    circle.classList.add(styleClass, 'pollutant');
+    
+    //Animate circles
+    circle.style.left = Math.random() * window.innerWidth + 'px';
+    circle.style.top = Math.random() * window.innerHeight + 'px';
 
-      let directionX = Math.random(); 
-      let directionY = Math.random(); 
+    let directionX = Math.random(); 
+    let directionY = Math.random(); 
 
-      circle.style.animation = `moveSpore ${Math.random() * 40 + 20}s linear infinite`;
-      circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
-      
-      //Display
-      pollutantCountElement.appendChild(circle);
-
-
-      
-    }
+    circle.style.animation = `moveSpore ${Math.random() * 40 + 20}s linear infinite`;
+    circle.style.animationDirection = directionX === 1 ? 'normal' : 'reverse';
+    
+    //Display
+    pollutantCountElement.appendChild(circle);
+    
+  }
 };
 
 
 
 // ------- Function: Show pollutant data ------- 
-const showData = (data, pollutantName, containerId, unitId) =>{
+const showData = (data, name, statId, unitId) =>{
     
-    let pollutantData = document.getElementById(containerId);
-    pollutantData.innerHTML = data.current[pollutantName];
+    let pollutantData = document.getElementById(statId);
+    pollutantData.innerHTML = data.current[name];
 
     let pollutantUnit = document.getElementById(unitId);
-    pollutantUnit.innerHTML = data.current_units[pollutantName];
+    pollutantUnit.innerHTML = data.current_units[name];
 };
 
 // ------- Location Control ------- 
@@ -250,9 +252,9 @@ expandButton.addEventListener('click', () => {
 
 
 // ------- Scroll to pollution info on click ------- 
-const scrollPollutant = (pollutantId, infoBoxId) => {
+const scrollPollutant = (countId, infoBoxId) => {
   var targetBox = document.getElementById(infoBoxId);
-  var listItem = document.getElementById(pollutantId);
+  var listItem = document.getElementById(countId);
   
     listItem.addEventListener('click', function(){
       console.log('clicked');
