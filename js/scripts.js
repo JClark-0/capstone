@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lat =(position.coords.latitude);
     lng = (position.coords.longitude);
     fetchData(lat, lng); 
-    showLocation (lat, lng);
+    // showLocation (lat, lng);
   });
 
   fetch('json/data.json')
@@ -33,6 +33,8 @@ function fetchAndSave(lat,lng){
   fetch(urlPollen)
   .then((response) => response.json())
   .then((data) => { 
+    data.realLatitude = lat;
+    data.realLongitude = lng;
     database.push(data)
   })
 }
@@ -43,6 +45,8 @@ function fetchData(lat,lng) {
   fetch(urlPollen)
   .then((response) => response.json())
   .then((data) => {
+    data.realLatitude = lat;
+    data.realLongitude = lng;
     database.splice(0, 0, data);
     renderOnScreen(database[0]);
     console.log(database);
@@ -82,7 +86,7 @@ function renderOnScreen(data){
   document.documentElement.style.setProperty('--on_load', 100);
 
    // Show location based on Lat & Long (linked to API)
-  showLocation (data.latitude, data.longitude);
+  showLocation (data.realLatitude, data.realLongitude);
 
   // let timeZone = document.getElementById('timezone');
   // let formattedTimezone = data.timezone.replace(/_/g, ' ').replace(/[\/]/g, ', ');
