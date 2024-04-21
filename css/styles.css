@@ -358,6 +358,15 @@ h1 {
     width:25px;
     border-radius: 50%;
 }
+
+.box_highlight {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.03);
+}
+
+#pm2_5box {
+    transition: all 0.2s ease-in-out;
+}
 .pollution_list {
     display: flex;
     flex-direction: row;

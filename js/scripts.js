@@ -98,8 +98,12 @@ function renderOnScreen(data){
   // createPollutant function: Data, Pollutant Name, Container Id, Pollutant Class
   // showData function: Data, Pollutant Name, Container Id
   //PM2.5: 
-  createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
-  showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+
+
+    createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
+    showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+    
+
   //PM10:
   createPollutant (data, 'pm10', 'pm10_count', 'pm10');
   showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
@@ -127,7 +131,8 @@ function renderOnScreen(data){
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside.';
 
-    document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
+    // document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
+    document.documentElement.style.setProperty('--pm2_5', 'blue')
     document.documentElement.style.setProperty('--pm10', '#9CE73A')
     document.documentElement.style.setProperty('--ozone', '#B0F35C')
     document.documentElement.style.setProperty('--cm', '#CAF98D')
@@ -183,9 +188,13 @@ const createPollutant = (data, pollutantName, containerId, pollutantClass) => {
       
       //Display
       pollutantCountElement.appendChild(circle);
+
+
       
     }
 };
+
+
 
 // ------- Function: Show pollutant data ------- 
 const showData = (data, pollutantName, containerId, unitId) =>{
@@ -239,6 +248,22 @@ expandButton.addEventListener('click', () => {
 });
 
 
+// ------- Scroll to Pollutant info on click ------- 
+document.addEventListener('DOMContentLoaded', function() {
+  var targetBox = document.querySelector('#pm2_5box');
+  var listItem = document.querySelectorAll('#pm2_5_count');
+  
+  listItem.forEach(function(item) {
+    item.addEventListener('click', function(){
+      targetBox.scrollIntoView({ behavior: 'smooth' });
+
+      targetBox.classList.add('box_highlight');
+      setTimeout(function() {
+        targetBox.classList.remove('box_highlight');
+      }, 1000);
+    });
+  });
+});
 
 
 // add saved lat and lng to add to list of places 
