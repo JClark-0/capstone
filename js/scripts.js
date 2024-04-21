@@ -105,16 +105,23 @@ const renderOnScreen = (data) => {
     scrollPollutant(pollutant.countId, pollutant.infoBoxId); 
   });
 
-  // ------- USA AQI ------- 
+  // ------- AQI ------- 
   let aqi = data.current.us_aqi;
   let aqi_num = document.getElementById('aqi');
   aqi_num.innerHTML = aqi +' AQI';
-
   aqiCondition(aqi);
   
 }
 
-  // ------- AQI Condition Control ------- 
+// ------- AQI Page Styles ------- 
+
+const aqiConditionStyles = (properties) => {
+  Object.entries(properties).forEach(([property, value]) => {
+    document.documentElement.style.setProperty(property,value);
+  });
+}
+
+// ------- AQI Condition Control ------- 
 const aqiCondition = (aqi) => {
   let conditionText = '';
   let adviceText = '';
@@ -122,12 +129,14 @@ const aqiCondition = (aqi) => {
   if (aqi <= 50){
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside.';
-    document.documentElement.style.setProperty('--pm2_5', '#B0F35C')
-    document.documentElement.style.setProperty('--pm10', '#1CB659')
-    document.documentElement.style.setProperty('--ozone', '#53D5C5')
-    document.documentElement.style.setProperty('--cm', '#63EC9A')
-    document.documentElement.style.setProperty('--sd', '#9DE6F6')
-    document.documentElement.style.setProperty('--nd', '#CAF98D')
+   aqiConditionStyles({
+    '--pm2_5': '#B0F35C',
+    '--pm10': '#1CB659',
+    '--ozone': '#53D5C5',
+    '--cm': '#63EC9A',
+    '--sd': '#9DE6F6',
+    '--nd': '#CAF98D'
+   });
 
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
