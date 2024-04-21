@@ -89,41 +89,51 @@ function renderOnScreen(data){
    // Show location based on Lat & Long (linked to API)
   showLocation (data.realLatitude, data.realLongitude);
 
-  // ------- Calling Pollutant Functions ------- 
-  
+
   // Pollutant Objects 
   const pollutants = [
-    { name: 'pm2_5', countId: 'pm2_5_count', styleClass: 'pm2_5', statId:'pm2_5_data', unitId:'pm2_5UnitId', infoBoxId:'pm2_5box' }
+    { name: 'pm2_5', countId: 'pm2_5_count', styleClass: 'pm2_5', statId:'pm2_5_data', unitId:'pm2_5UnitId', infoBoxId:'pm2_5box' },
+    { name: 'pm10', countId: 'pm10_count', styleClass: 'pm10', statId:'pm10_data', unitId:'pm10UnitId', infoBoxId:'pm10box' },
+    { name: 'ozone', countId: 'ozone_count', styleClass: 'ozone', statId:'ozone_data', unitId:'ozoneUnitId', infoBoxId:'ozonebox' },
+    { name: 'carbon_monoxide', countId: 'cm_count', styleClass: 'cm', statId:'cm_data', unitId:'cmUnitId', infoBoxId:'cmbox' },
+    { name: 'nitrogen_dioxide', countId: 'nd_count', styleClass: 'nd', statId:'nd_data', unitId:'ndUnitId', infoBoxId:'ndbox' },
+    { name: 'sulphur_dioxide', countId: 'sd_count', styleClass: 'sd', statId:'sd_data', unitId:'sdUnitId', infoBoxId:'sdbox' }
   ]
 
+  // ------- Calling Pollutant Functions ------- 
   pollutants.forEach(pollutant => {
-    createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass)
+    console.log(pollutant);
+    createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass);
+    showData(data, pollutant.name, pollutant.statId, pollutant.unitId);
+    scrollPollutant(pollutant.countId, pollutant.infoBoxId);
+    
   });
 
+   
   //PM2.5: 
   // createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
   // showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
   // scrollPollutant('pm2_5_count', 'pm2_5box');
   //PM10:
-  createPollutant (data, 'pm10', 'pm10_count', 'pm10');
-  showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
-  scrollPollutant('pm10_count', 'pm10box');
+  // createPollutant (data, 'pm10', 'pm10_count', 'pm10');
+  // showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
+  // scrollPollutant('pm10_count', 'pm10box');
   //Ozone: 
-  createPollutant (data, 'ozone', 'ozone_count', 'ozone');
-  showData (data, 'ozone', 'ozone_data','ozoneUnitId');
-  scrollPollutant('ozone_count', 'ozonebox');
+  // createPollutant (data, 'ozone', 'ozone_count', 'ozone');
+  // showData (data, 'ozone', 'ozone_data','ozoneUnitId');
+  // scrollPollutant('ozone_count', 'ozonebox');
   //Carbon Monoxide:
-  createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
-  showData (data, 'carbon_monoxide', 'cm_data','cmUnitId');
-  scrollPollutant('cm_count', 'cmbox');
+  // createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
+  // showData (data, 'carbon_monoxide', 'cm_data','cmUnitId');
+  // scrollPollutant('cm_count', 'cmbox');
   //Nitrogen Dioxide: 
-  createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
-  showData (data, 'nitrogen_dioxide', 'nd_data', 'ndUnitId');
-  scrollPollutant('nd_count', 'ndbox');
+  // createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
+  // showData (data, 'nitrogen_dioxide', 'nd_data', 'ndUnitId');
+  // scrollPollutant('nd_count', 'ndbox');
   //Sulphur Dioxide:
-  createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
-  showData (data, 'sulphur_dioxide', 'sd_data','sdUnitId');
-  scrollPollutant('sd_count', 'sdbox');
+  // createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
+  // showData (data, 'sulphur_dioxide', 'sd_data','sdUnitId');
+  // scrollPollutant('sd_count', 'sdbox');
 
   // ------- USA AQI ------- 
   let aqi = data.current.us_aqi;
