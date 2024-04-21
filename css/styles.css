@@ -221,6 +221,21 @@ h1 {
     cursor: help;
 }
 
+.aqi_box:hover ~ .aqi_help {
+    display: block;
+}
+
+.aqi_help {
+    display: none;
+    background-color: white;
+    border-radius: var(--radius);
+    padding: calc(var(--padding)*2);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: calc(var(--gutters)*6);
+}
+
 .add_blur {
     -webkit-backdrop-filter: blur(1px); /* Fixes blur for Safari*/
     backdrop-filter: blur(1px);
@@ -232,6 +247,9 @@ h1 {
     font-weight: 500;
     text-align: right;
 }
+
+
+
 .aqi_details {
     /* display: flex;
     flex-direction: row; */

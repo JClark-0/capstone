@@ -66,9 +66,10 @@ const showLocation = (lat, lng) => {
       console.log(response);
       let locationName = document.getElementById('locationId');
         if (response.address.country.includes('United States of America')) {
-          locationName.innerHTML = response.address.state + ', ' + 'USA';
+          locationName.innerHTML = response.address.city + ', ' + response.address.state;
+          // +', ' + 'USA'
           } else  {
-          locationName.innerHTML = response.address.state + ', ' + response.address.country;
+          locationName.innerHTML = response.address.city + ', ' + response.address.country;
         }
     })
     .catch(err => console.error(err));
@@ -236,6 +237,8 @@ expandButton.addEventListener('click', () => {
   aqiDetails.classList.add('expanded');
 
 });
+
+
 
 
 // add saved lat and lng to add to list of places 
