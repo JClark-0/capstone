@@ -279,7 +279,7 @@ h3 {
 #condition {
     font-size: var(--base-size);
     background: black;
-    color: white;
+    color: var(--secondary-font-color);
     border-radius: var(--radius);
     padding: var(--padding);
     text-align: center;
@@ -402,12 +402,12 @@ h3 {
     font-family: var(--tag-font);
     font-size: var(--tag-size);
     background-color: black;
-    color: white;
+    color: var(--secondary-font-color);
     border-radius: var(--radius);
     padding: var(--padding);
 }
-/* ABOUT PAGE */
 
+/* ABOUT PAGE */
 .top {
     position: absolute;
     bottom: 0;
