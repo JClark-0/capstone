@@ -95,30 +95,31 @@ function renderOnScreen(data){
 
 
   // ------- Calling Pollutant Functions ------- 
-  // createPollutant function: Data, Pollutant Name, Container Id, Pollutant Class
-  // showData function: Data, Pollutant Name, Container Id
+  
   //PM2.5: 
-
-
-    createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
-    showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
-    
-
+  createPollutant (data, 'pm2_5', 'pm2_5_count', 'pm2_5');
+  showData (data, 'pm2_5', 'pm2_5_data' ,'pm2_5UnitId');
+  scrollPollutant('pm2_5_count', 'pm2_5box');
   //PM10:
   createPollutant (data, 'pm10', 'pm10_count', 'pm10');
   showData (data, 'pm10', 'pm10_data' ,'pm10UnitId');
+  scrollPollutant('pm10_count', 'pm10box');
   //Ozone: 
   createPollutant (data, 'ozone', 'ozone_count', 'ozone');
   showData (data, 'ozone', 'ozone_data','ozoneUnitId');
+  scrollPollutant('ozone_count', 'ozonebox');
   //Carbon Monoxide:
   createPollutant (data, 'carbon_monoxide', 'cm_count', 'cm');
   showData (data, 'carbon_monoxide', 'cm_data','cmUnitId');
+  scrollPollutant('cm_count', 'cmbox');
   //Nitrogen Dioxide: 
   createPollutant (data, 'nitrogen_dioxide', 'nd_count', 'nd');
   showData (data, 'nitrogen_dioxide', 'nd_data', 'ndUnitId');
+  scrollPollutant('nd_count', 'ndbox');
   //Sulphur Dioxide:
   createPollutant (data, 'sulphur_dioxide', 'sd_count', 'sd');
   showData (data, 'sulphur_dioxide', 'sd_data','sdUnitId');
+  scrollPollutant('sd_count', 'sdbox');
 
   // ------- USA AQI ------- 
   let aqi = data.current.us_aqi;
@@ -248,13 +249,13 @@ expandButton.addEventListener('click', () => {
 });
 
 
-// ------- Scroll to Pollutant info on click ------- 
-document.addEventListener('DOMContentLoaded', function() {
-  var targetBox = document.querySelector('#pm2_5box');
-  var listItem = document.querySelectorAll('#pm2_5_count');
+// ------- Scroll to pollution info on click ------- 
+const scrollPollutant = (pollutantId, infoBoxId) => {
+  var targetBox = document.getElementById(infoBoxId);
+  var listItem = document.getElementById(pollutantId);
   
-  listItem.forEach(function(item) {
-    item.addEventListener('click', function(){
+    listItem.addEventListener('click', function(){
+      console.log('clicked');
       targetBox.scrollIntoView({ behavior: 'smooth' });
 
       targetBox.classList.add('box_highlight');
@@ -262,8 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         targetBox.classList.remove('box_highlight');
       }, 1000);
     });
-  });
-});
+}
 
 
 // add saved lat and lng to add to list of places 

@@ -359,14 +359,8 @@ h1 {
     border-radius: 50%;
 }
 
-.box_highlight {
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.03);
-}
 
-#pm2_5box {
-    transition: all 0.2s ease-in-out;
-}
+
 .pollution_list {
     display: flex;
     flex-direction: row;
@@ -386,6 +380,23 @@ h1 {
     /* height: 150px; */
     max-width: 100%;    
 }
+
+#pm2_5box, #pm10box, #ozonebox, #cmbox, #sdbox, #ndbox {
+    transition: all 0.2s ease-in-out;
+}
+
+#pm2_5box.box_highlight, 
+#pm10box.box_highlight, 
+#ozonebox.box_highlight,
+#cmbox.box_highlight,
+#sdbox.box_highlight,
+#ndbox.box_highlight
+  {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.03);
+    background-color: rgba(246, 246, 246, 0.353);
+}
+
 
 .pollutant_title {
     display: flex;
