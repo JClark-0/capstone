@@ -182,6 +182,8 @@ const aqiCondition = (aqi) => {
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside.';
     aqiConditionStyles({
+      // '--page-bg': 'black',
+      // '--btn-color': 'green',
       '--pm2_5': '#B0F35C',
       '--pm10': '#1CB659',
       '--ozone': '#53D5C5',

@@ -18,25 +18,24 @@
 
     /* Page Colors */
     --page-bg:rgb(247, 243, 232); 
-    --dark-bg: rgb(30, 21, 18); 
-    --light-bg: rgb(247, 243, 232); 
-
-    --light-font: white;
-    --dark-font: rgb(1, 29, 1); 
+    --card-bg: white; 
+    --primary-font-color: rgb(15, 15, 15); 
+    --secondary-font-color: white; 
 
     /* Buttons  */
     --btn-radius: 40px;
     --btn-color: rgb(243, 196, 57);
+    --inactive-btn-color: white; 
+    --btn-scale: scale(1.02);
 
     /* Pollutant Formatting */
-    --pm2_5: grey; /* rgb(233, 240, 111); */
-    --pm10: grey; 
-    --ozone: grey; /*  rgb(78, 198, 9); */
-    --cm: grey;/*rgb(69, 224, 100); */
-    --nd: grey; /*rgb(218, 165, 6); */
-    --sd: grey; /*rgb(4, 86, 11);    */
-
     --pollutant-size:25px;
+    --pm2_5: grey;
+    --pm10: grey; 
+    --ozone: grey;
+    --cm: grey;
+    --nd: grey;
+    --sd: grey; 
 
     /* Before Fetch  */
     --on_load: 0;
@@ -57,7 +56,7 @@ html {
 body {
     font-family: var(--body-font);
     font-size: var(--base-size);
-    color: var(--dark-font);
+    color: var(--primary-font-color);
     background-color: var(--page-bg);
     margin-top: calc(var(--gutters)*2);
     margin-left: calc(var(--gutters)*2);
@@ -90,14 +89,13 @@ main {
     padding-right: var(--padding);
 }
 
-
 .btn:not(.active):hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
 .btn:hover {
-    transform: scale(1.02);
+    transform: var(--btn-scale);
 }
 
 .active {
@@ -118,7 +116,7 @@ button {
 }
 
 .sub_btn{
-    background-color: white;
+    background-color: var(--inactive-btn-color);
     opacity: var(--on_load);
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
@@ -150,38 +148,38 @@ button {
 }
 
 .line_icon {
-    width: 22px;
+    width: 22px; /* create var */
     vertical-align: middle;
 }
 
 .inline_link {
-    border: 1px black solid;
+    background-color: var(--inactive-btn-color);
     border-radius: var(--btn-radius);
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
 }
+
 .inline_link::after {
     content: ' \2197'; 
-    font-size: 12px;
+    font-size: 12px; /* create var */
     font-weight: 700;
     transition: all .8s;
 }
 
-.inline_link:hover::after {
-    font-weight: 700;
-    transform: rotate(10deg);
-}
-
 .inline_link:hover {
     cursor: pointer;
-    background-color: black;
-    color: white;
+    background-color: var(--btn-color);
 }
 
 h1 {
     font-family: var(--display-font);
     font-size: var(--display-size);
     font-weight: 500;
+    line-height: 110%;
+}
+
+.timezone_header {
+    font-weight: 400;
 }
 
 h2 {
@@ -194,7 +192,7 @@ h3 {
 }
 
 .data_list {
-    background-color: white; 
+    background-color: var(--card-bg); 
     border-radius: var(--radius) 0 0 var(--radius);
     padding: calc(var(--padding)*2);
     position: absolute; 
@@ -205,13 +203,6 @@ h3 {
     flex-direction: row;
 }
 
-.timezone_header {
-    font-family: var(--display-font);
-    font-size: var(--display-size);
-    font-weight: 400;
-    line-height: 110%;
-
-}
 .aqi_box {
     position: absolute; 
     right: 0;
@@ -252,7 +243,7 @@ h3 {
 .aqi_details {
     border-radius: var(--radius);
     opacity: var(--on_load);
-    background-color: white;
+    background-color: var(--card-bg);
     padding: calc(var(--padding)*3);
     z-index: 2;
 }
@@ -265,7 +256,6 @@ h3 {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: white;
     width: 100%;
 }
 
@@ -329,7 +319,7 @@ h3 {
 }
 
 .pollutant_view {
-    height: calc(100dvh - 340px);
+    height: calc(100dvh - 340px); /* create var */
     overflow: hidden;
     position: relative;
     flex-grow: 1;
@@ -358,7 +348,7 @@ h3 {
     display: flex;
     flex-direction: column;
     padding: calc(var(--padding)*3);
-    background-color:white;
+    background-color:var(--card-bg);
     border-radius: var(--radius);
     max-width: 100%;    
 }
@@ -384,7 +374,7 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
-    width: 16rem;
+    width: 16rem; /* create var */
 }
 
 .pollutant_tag {
@@ -411,41 +401,11 @@ h3 {
 .pollutant_units {
     font-family: var(--tag-font);
     font-size: var(--tag-size);
-    background-color: var(--dark-bg);
+    background-color: black;
     color: white;
     border-radius: var(--radius);
     padding: var(--padding);
 }
-
-.help_scroll {
-    background-color: var(--btn-color);
-    border-radius: var(--btn-radius);
-    height: 20px;
-    /* align-self: center; */
-    position: absolute;
-    right: 0;
-    margin-top: var(--gutters);
-    margin-right: calc(var(--gutters)*4);
-    /* opacity: 50%; */
-    transition: all 1s;
-    transform: scale(1.04);
-    display: none;
-}
-
-.pollution_list:hover .help_scroll {
-    animation: pulse 1s infinite;
-    display: block;
-
-}
-@keyframes pulse {
-    100% {
-    transform: scale(1);
-    }
-    0% {
-    transform: scale(.91);
-    }
-}
-
 /* ABOUT PAGE */
 
 .top {
@@ -468,9 +428,9 @@ h3 {
 }
 
 .about_page{
-    background-color: var(--light-bg);
-    color: var(--dark-font)
+    background-color: var(--page-bg);
 }
+
 .about_main {
     display: flex;
     flex-direction: column;
@@ -488,13 +448,13 @@ h3 {
     display: flex; 
     flex-direction: column;
     gap: calc(var(--padding)*2);
-    max-width: 45ch;
+    max-width: 45ch; /* create var */
 }
 
 footer {
     background-color: rgb(0, 0, 0);
-    color: white;
-    font-size: 12px;
+    color: var(--secondary-font-color);
+    font-size: 12px; /* create var */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -563,3 +523,31 @@ footer {
         height: calc(100dvh - 280px);
     }
   }
+
+
+  /* .help_scroll {
+    background-color: var(--btn-color);
+    border-radius: var(--btn-radius);
+    height: 20px;
+    position: absolute;
+    right: 0;
+    margin-top: var(--gutters);
+    margin-right: calc(var(--gutters)*4);
+    transition: all 1s;
+    transform: scale(1.04);
+    display: none;
+
+    .pollution_list:hover .help_scroll {
+    animation: pulse 1s infinite;
+    display: block;
+}
+@keyframes pulse {
+    100% {
+    transform: scale(1);
+    }
+    0% {
+    transform: scale(.91);
+    }
+}
+
+} */
