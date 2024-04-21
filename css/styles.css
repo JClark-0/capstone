@@ -83,7 +83,6 @@ main {
     display: flex;
     flex-direction: row;
     align-content: center;
-
 }
 
 .logo {
@@ -103,7 +102,6 @@ main {
 
 .active {
     background-color: var(--btn-color);
-    /* font-weight: 500; */
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
     padding-top: var(--padding);
@@ -112,13 +110,11 @@ main {
 }
 
 button {
-    /* background-color: var(--btn-color); */
     border-radius: var(--btn-radius);
     padding-left: calc(var(--padding)*2);
     padding-right: calc(var(--padding)*2);
     opacity: var(--on_load);
     transition: all .4s;
-
 }
 
 .sub_btn{
@@ -133,9 +129,6 @@ button {
     gap: calc(var(--padding)/2);
     align-items: center;
     justify-content: center;
-
-
-
 }
 
 .sub_btn:hover {
@@ -146,7 +139,6 @@ button {
 
 .control_btn_active {
     background-color: var(--btn-color);
-
 }
 
 .location_control {
@@ -173,13 +165,13 @@ button {
     font-size: 12px;
     font-weight: 700;
     transition: all .8s;
-    
 }
 
 .inline_link:hover::after {
     font-weight: 700;
     transform: rotate(10deg);
 }
+
 .inline_link:hover {
     cursor: pointer;
     background-color: black;
@@ -248,11 +240,7 @@ h1 {
     text-align: right;
 }
 
-
-
 .aqi_details {
-    /* display: flex;
-    flex-direction: row; */
     border-radius: var(--radius);
     opacity: var(--on_load);
     background-color: white;
@@ -289,11 +277,8 @@ h1 {
     display: none;
 }
 
-
-
 #condition {
     font-size: var(--base-size);
-    /* font-weight: 500; */
     background: black;
     color: white;
     border-radius: var(--radius);
@@ -312,6 +297,7 @@ h1 {
 
 .pm10 {
     background-color: var(--pm10);
+    opacity: 80%;
 }
 .ozone{
     background: var(--ozone);
@@ -334,23 +320,18 @@ h1 {
 }
 
 .pollutant_view {
-    /* display: flex;
-    flex-wrap: wrap; */
-    /* height: 100dvh; */
     height: calc(100dvh - 340px);
     overflow: hidden;
     position: relative;
     flex-grow: 1;
     margin-top: calc(var(--padding) * 4);
-    /* outline: 1px white solid; */
-
 }
+
 .pollutant {
     height: var(--pollutant-size);
     width: var(--pollutant-size);
     border-radius: 50%;
     position: absolute;
-    /* mix-blend-mode: color-dodge; */
 }
 
 .pollutant {
@@ -359,25 +340,19 @@ h1 {
     border-radius: 50%;
 }
 
-
-
 .pollution_list {
     display: flex;
     flex-direction: row;
     gap: calc(var(--padding)*3);
-    /* height: calc(100dvh - 220px - (var(--gutters)*2)); */
     overflow-x: auto;
     margin-top: calc(var(--padding) * 4);
 }
 .pollution_info {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     padding: calc(var(--padding)*3);
     background-color:white;
     border-radius: var(--radius);
-    /* Add these to variables */
-    /* height: 150px; */
     max-width: 100%;    
 }
 
@@ -396,7 +371,6 @@ h1 {
     transform: scale(1.03);
     background-color: rgba(246, 246, 246, 0.353);
 }
-
 
 .pollutant_title {
     display: flex;
@@ -516,7 +490,6 @@ footer {
     font-size: 12px;
     display: flex;
     flex-direction: row;
-    /* gap: var(--gutters); */
     justify-content: space-between;
     padding-right: var(--gutters);
     padding-left: var(--gutters);
@@ -582,15 +555,4 @@ footer {
     .pollutant_view, .pollution_list {
         height: calc(100dvh - 280px);
     }
-
-    /* .aqi_details {
-        max-width: 90%;
-    } */
   }
-
-
-  /* @media (orientation: landscape) {
-    body {
-      background-color: blue;
-    }
-  } */
