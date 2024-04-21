@@ -75,7 +75,7 @@ const showLocation = (lat, lng) => {
 };
 
 // ------- Render data on page -------
-function renderOnScreen(data){
+const renderOnScreen = (data) => {
 
   // Changes value on variable (opacity)
   document.documentElement.style.setProperty('--on_load', 100);
@@ -109,30 +109,29 @@ function renderOnScreen(data){
   let aqi = data.current.us_aqi;
   let aqi_num = document.getElementById('aqi');
   aqi_num.innerHTML = aqi +' AQI';
-  // console.log('USA AQI', aqi);
 
+  aqiCondition(aqi);
+  
+}
+
+  // ------- AQI Condition Control ------- 
+const aqiCondition = (aqi) => {
   let conditionText = '';
+  let adviceText = '';
+
   if (aqi <= 50){
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside.';
-
-    // document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
-    document.documentElement.style.setProperty('--pm2_5', 'blue')
-    document.documentElement.style.setProperty('--pm10', '#9CE73A')
-    document.documentElement.style.setProperty('--ozone', '#B0F35C')
-    document.documentElement.style.setProperty('--cm', '#CAF98D')
-    document.documentElement.style.setProperty('--sd', '#93D77B')
-    document.documentElement.style.setProperty('--nd', '#51A733')
+    document.documentElement.style.setProperty('--pm2_5', '#B0F35C')
+    document.documentElement.style.setProperty('--pm10', '#1CB659')
+    document.documentElement.style.setProperty('--ozone', '#53D5C5')
+    document.documentElement.style.setProperty('--cm', '#63EC9A')
+    document.documentElement.style.setProperty('--sd', '#9DE6F6')
+    document.documentElement.style.setProperty('--nd', '#CAF98D')
 
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
     adviceText = 'It’s good day to be active outside. Sensitive individuals may experience increased symptoms.';
-    document.documentElement.style.setProperty('--pm2_5', '#187D40')
-    document.documentElement.style.setProperty('--pm10', '#187D42')
-    document.documentElement.style.setProperty('--ozone', '#1CB659')
-    document.documentElement.style.setProperty('--cm', '#53D5C5')
-    document.documentElement.style.setProperty('--sd', '#63EC9A')
-    document.documentElement.style.setProperty('--nd', '#9DE6F6')
 
   } else if (aqi >= 101 && aqi <= 150) {
     conditionText = 'Unhealthy(senstive groups)';
@@ -145,11 +144,13 @@ function renderOnScreen(data){
     adviceText = 'Everyone should consider moving activities indoors today.';
   } else if (aqi >= 301 && aqi <= 500) {
     conditionText = 'Hazardous';
-    adviceText = 'Everyone should avoid all physical activity outdoors today.';
+    adviceText = 'Warning: Everyone should avoid all activity outdoors today.';
   }
+
   document.getElementById('condition').textContent = conditionText;
   document.getElementById('aqi_advice').textContent = adviceText
-}
+};
+
 
 // -------  Function: Circles from pollutant count ------- 
 const createPollutant = (data, name, counttId, styleClass) => {
@@ -251,6 +252,22 @@ const scrollPollutant = (countId, infoBoxId) => {
 // add saved lat and lng to add to list of places 
 // add last updated 
 // add color states for different conditions (could use canvas)
+
+
+
+    // document.documentElement.style.setProperty('--pm2_5', '#187D40')
+    // document.documentElement.style.setProperty('--pm10', '#187D42')
+    // document.documentElement.style.setProperty('--ozone', '#1CB659')
+    // document.documentElement.style.setProperty('--cm', '#53D5C5')
+    // document.documentElement.style.setProperty('--sd', '#63EC9A')
+    // document.documentElement.style.setProperty('--nd', '#9DE6F6')
+
+    // document.documentElement.style.setProperty('--pm2_5', '#9CE73D')
+    // document.documentElement.style.setProperty('--pm10', '#9CE73A')
+    // document.documentElement.style.setProperty('--ozone', '#B0F35C')
+    // document.documentElement.style.setProperty('--cm', '#CAF98D')
+    // document.documentElement.style.setProperty('--sd', '#93D77B')
+    // document.documentElement.style.setProperty('--nd', '#51A733')
 
 
   //PM2.5: 

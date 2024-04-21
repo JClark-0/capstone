@@ -5,7 +5,7 @@
     /* Fonts */
     --display-font: "Space Grotesk", sans-serif;
     --display-size: 36px;
-    --header-size: calc(var(--base-size)*1.5);
+    --header-size: 18px;
     --body-font: "Poppins", sans-serif;
     --base-size: 15px;
     --tag-font: monospace;
@@ -36,7 +36,7 @@
     --nd: grey; /*rgb(218, 165, 6); */
     --sd: grey; /*rgb(4, 86, 11);    */
 
-    --pollutant-size:35px;
+    --pollutant-size:25px;
 
     /* Before Fetch  */
     --on_load: 0;
@@ -181,6 +181,15 @@ button {
 h1 {
     font-family: var(--display-font);
     font-size: var(--display-size);
+    font-weight: 500;
+}
+
+h2 {
+    font-size: var(--header-size);
+    font-weight: 500;  
+}
+
+h3 {
     font-weight: 500;
 }
 
@@ -334,10 +343,8 @@ h1 {
     position: absolute;
 }
 
-.pollutant {
-    height: 25px;
-    width:25px;
-    border-radius: 50%;
+.pollutant:hover {
+    cursor: pointer;
 }
 
 .pollution_list {
