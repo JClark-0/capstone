@@ -53,6 +53,12 @@ html {
     scroll-behavior: smooth;
   }
 
+#loader {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+}
+
 body {
     font-family: var(--body-font);
     font-size: var(--base-size);
