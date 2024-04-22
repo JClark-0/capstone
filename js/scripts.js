@@ -93,7 +93,7 @@ const renderOnScreen = (data) => {
     createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass);
     showData(data, pollutant.name, pollutant.statId, pollutant.unitId);
     scrollPollutant(pollutant.countId, pollutant.infoBoxId); 
-    expandPollutant(pollutant.infoBoxId);
+    expandPollutant(pollutant.name, pollutant.infoBoxId, pollutant.expandedId);
   });
   // ------- AQI ------- 
   let aqi = data.current.us_aqi;
@@ -108,18 +108,18 @@ const renderOnScreen = (data) => {
 // ======== POLLUTANT FUNCTIONS & OBJECTS =========
 // ------- Pollutant Objects -------
 const pollutants = [
-  { name: 'pm2_5', countId: 'pm2_5_count', styleClass: 'pm2_5', statId:'pm2_5_data', unitId:'pm2_5UnitId', infoBoxId:'pm2_5box' },
-  { name: 'pm10', countId: 'pm10_count', styleClass: 'pm10', statId:'pm10_data', unitId:'pm10UnitId', infoBoxId:'pm10box' },
-  { name: 'ozone', countId: 'ozone_count', styleClass: 'ozone', statId:'ozone_data', unitId:'ozoneUnitId', infoBoxId:'ozonebox' },
-  { name: 'carbon_monoxide', countId: 'cm_count', styleClass: 'cm', statId:'cm_data', unitId:'cmUnitId', infoBoxId:'cmbox' },
-  { name: 'nitrogen_dioxide', countId: 'nd_count', styleClass: 'nd', statId:'nd_data', unitId:'ndUnitId', infoBoxId:'ndbox' },
-  { name: 'sulphur_dioxide', countId: 'sd_count', styleClass: 'sd', statId:'sd_data', unitId:'sdUnitId', infoBoxId:'sdbox' }
+  { name: 'pm2_5', countId: 'pm2_5_count', styleClass: 'pm2_5', statId:'pm2_5_data', unitId:'pm2_5UnitId', infoBoxId:'pm2_5box', expandedId:'pm2_5Expanded' },
+  { name: 'pm10', countId: 'pm10_count', styleClass: 'pm10', statId:'pm10_data', unitId:'pm10UnitId', infoBoxId:'pm10box', expandedId:'pm10Expanded' },
+  { name: 'ozone', countId: 'ozone_count', styleClass: 'ozone', statId:'ozone_data', unitId:'ozoneUnitId', infoBoxId:'ozonebox', expandedId:'ozoneExpanded' },
+  { name: 'carbon_monoxide', countId: 'cm_count', styleClass: 'cm', statId:'cm_data', unitId:'cmUnitId', infoBoxId:'cmbox', expandedId:'cmExpanded' },
+  { name: 'nitrogen_dioxide', countId: 'nd_count', styleClass: 'nd', statId:'nd_data', unitId:'ndUnitId', infoBoxId:'ndbox', expandedId:'ndExpanded' },
+  { name: 'sulphur_dioxide', countId: 'sd_count', styleClass: 'sd', statId:'sd_data', unitId:'sdUnitId', infoBoxId:'sdbox', expandedId:'sdExpanded' }
 ]
 
 // -------  Function: Circles from pollutant count ------- 
-const createPollutant = (data, name, counttId, styleClass) => {
+const createPollutant = (data, name, countId, styleClass) => {
   const pollutantCount = data.current[name];
-  const pollutantCountElement = document.getElementById(counttId);
+  const pollutantCountElement = document.getElementById(countId);
 
   //Loop through the pollutant count 
   for (let i = 0; i < pollutantCount; i++) {
@@ -169,16 +169,23 @@ const scrollPollutant = (countId, infoBoxId) => {
 
 
 // ------- Expand to pollution info on click ------- 
-const expandPollutant = (infoBoxId) => {
+const expandPollutant = (name, infoBoxId, expandedId) => {
   document.getElementById(infoBoxId).onclick = () => {
-    var pollutantExpanded = document.getElementById('pollutant_expanded');
+    var pollutantExpanded = document.getElementById(expandedId);
     if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
       pollutantExpanded.style.display = 'block';
     } else {
       pollutantExpanded.style.display = 'none';
     }
-    document.getElementById('close_expanded_pol').onclick = () => {
+    document.getElementsByClassName('close_expanded_pol').onclick = () => {
       pollutantExpanded.style.display = 'none';
+
+    // if (name === 'pm2_5'){
+    //   pollutantExpanded.innerHTML ='hello pm25';
+    // } else if (name === 'pm10') {
+    //   pollutantExpanded.innerHTML ='hello pm10'
+    // }
+
     };
   };
 };

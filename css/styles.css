@@ -37,6 +37,10 @@
     --nd: grey;
     --sd: grey; 
 
+
+    /* Icon  */
+    --icon-size: 22px;
+
     /* Before Fetch  */
     --on_load: 0;
     --display: block;
@@ -90,7 +94,7 @@ main {
 }
 
 .logo {
-    width: 22px;
+    width: var(--icon-size);
     padding-right: var(--padding);
 }
 
@@ -152,7 +156,7 @@ button {
 }
 
 .line_icon {
-    width: 22px; /* create var */
+    width: var(--icon-size); /* create var */
     vertical-align: middle;
 }
 
@@ -366,11 +370,11 @@ h3 {
 }
 /* Pollution Info Expanded */
 
-#pollutant_expanded {
+.pollutant_expanded {
     display: none;
     position: absolute;
     backdrop-filter: blur(6px);
-    background-color: rgba(157, 157, 157, 0.144);
+    background-color: rgba(218, 218, 218, 0.576);
     border-radius: var(--radius);
     padding: calc(var(--padding)*3);
     width: 100%;
@@ -386,7 +390,7 @@ h3 {
     border-radius: var(--radius);
 }
 
-#close_expanded_pol:hover {
+.close_expanded_pol:hover {
     cursor: pointer;
     transform: scale(var(--btn-scale));
 }
