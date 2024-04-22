@@ -93,6 +93,7 @@ const renderOnScreen = (data) => {
     createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass);
     showData(data, pollutant.name, pollutant.statId, pollutant.unitId);
     scrollPollutant(pollutant.countId, pollutant.infoBoxId); 
+    expandPollutant(pollutant.infoBoxId);
   });
   // ------- AQI ------- 
   let aqi = data.current.us_aqi;
@@ -168,19 +169,20 @@ const scrollPollutant = (countId, infoBoxId) => {
 
 
 // ------- Expand to pollution info on click ------- 
-// const expandPollutant = (infoBoxId, pollutant_expanded) => {
-document.getElementById('pm2_5box').onclick = () => {
-  var pollutantExpanded = document.getElementById('pollutant_expanded');
-  if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
-    pollutantExpanded.style.display = 'block';
-  } else {
-    pollutantExpanded.style.display = 'none';
-  }
-  document.getElementById('close_expanded_pol').onclick = () => {
-    pollutantExpanded.style.display = 'none';
+const expandPollutant = (infoBoxId) => {
+  document.getElementById(infoBoxId).onclick = () => {
+    var pollutantExpanded = document.getElementById('pollutant_expanded');
+    if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
+      pollutantExpanded.style.display = 'block';
+    } else {
+      pollutantExpanded.style.display = 'none';
+    }
+    document.getElementById('close_expanded_pol').onclick = () => {
+      pollutantExpanded.style.display = 'none';
+    };
   };
 };
-  
+    
 
 
 // ======== AQI FUNCTIONS =========
