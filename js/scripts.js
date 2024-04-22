@@ -141,7 +141,7 @@ const createPollutant = (data, name, counttId, styleClass) => {
 };
 
 // ------- Function: Show pollutant data ------- 
-const showData = (data, name, statId, unitId) =>{
+const showData = (data, name, statId, unitId) => {
     
     let pollutantData = document.getElementById(statId);
     pollutantData.innerHTML = data.current[name];
@@ -182,24 +182,42 @@ const aqiCondition = (aqi) => {
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside.';
     aqiConditionStyles({
-      // '--page-bg': 'black',
-      // '--btn-color': 'green',
       '--pm2_5': '#B0F35C',
       '--pm10': '#1CB659',
       '--ozone': '#53D5C5',
       '--cm': '#63EC9A',
       '--sd': '#9DE6F6',
-      '--nd': '#CAF98D'
+      '--nd': '#CAF98D',
+      '--page-bg': '#F5F5F5'
     });
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
-    adviceText = 'It’s good day to be active outside. Sensitive individuals may experience increased symptoms.';
+    adviceText = 'It’s good day to be active outside. <a class="btn" href="about.html">Sensitive individuals</a> may experience increased symptoms.';
+    aqiConditionStyles({
+      '--pm2_5': '#FFD700',
+      '--pm10': '#FFA500',
+      '--ozone': '#FF6347',
+      '--cm': '#4CAF50',
+      '--sd': '#008080',
+      '--nd': '#4682B4',
+      '--page-bg': '#f7f3e8'
+    });
   } else if (aqi >= 101 && aqi <= 150) {
     conditionText = 'Unhealthy(senstive groups)';
     adviceText = 'It’s an ok day to be active outside today. Sensitive individuals should limit prolonged outdoor activities';
   } else if (aqi >= 151 && aqi <= 200) {
     conditionText = 'Unhealthy';
     adviceText = 'Everyone should limit prolonged outdoor activities today.';
+    aqiConditionStyles({
+      '--pm2_5': '#FF6347',
+      '--pm10': '#FFA500',
+      '--ozone': '#FFD700',
+      '--cm': '#FF4500',
+      '--sd': '#8B0000',
+      '--nd': '#800000',
+      '--page-bg': '#5A371E'
+      // '--page-bg': '#FFF3E8'
+    });
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
     adviceText = 'Everyone should consider moving activities indoors today.';
@@ -208,7 +226,7 @@ const aqiCondition = (aqi) => {
     adviceText = 'Warning: Everyone should avoid all activity outdoors today.';
   }
   document.getElementById('condition').textContent = conditionText;
-  document.getElementById('aqi_advice').textContent = adviceText
+  document.getElementById('aqi_advice').innerHTML = adviceText
 };
 
 
