@@ -78,8 +78,9 @@ const showLocation = (lat, lng) => {
 // ======== RENDER ON PAGE =========
 const renderOnScreen = (data) => {
 
-  // ------- Changes value on variable (opacity -------
+  // ------- Changes value on variable (opacity + display) -------
   document.documentElement.style.setProperty('--on_load', 100);
+  document.documentElement.style.setProperty('--display', 'none');
 
   // ------- Clear Pollutant circles -------
   document.querySelectorAll('.pollutants').forEach(box => {
@@ -215,8 +216,7 @@ const aqiCondition = (aqi) => {
       '--cm': '#FF4500',
       '--sd': '#8B0000',
       '--nd': '#800000',
-      '--page-bg': '#5A371E'
-      // '--page-bg': '#FFF3E8'
+      '--page-bg': '#FFF3E8'
     });
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
@@ -277,13 +277,13 @@ expandButton.addEventListener('click', () => {
 
 
 
-document.documentElement.onload = function(){
-  document.getElementById("loader").style.display = "block";
-};
+// document.documentElement.onload = function(){
+//   document.getElementById("loader").style.display = "block";
+// };
 
-window.onload = function(){
-  document.getElementById("loader").style.display = "none";
-};
+// window.onload = function(){
+//   document.getElementById("loader").style.display = "none";
+// };
 
 
 
