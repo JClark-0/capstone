@@ -99,9 +99,9 @@ main {
     cursor: pointer;
 }
 
-.btn:hover {
+/* .btn:hover {
     transform: var(--btn-scale);
-}
+} */
 
 .active {
     background-color: var(--btn-color);
@@ -358,6 +358,37 @@ h3 {
     background-color:var(--card-bg);
     border-radius: var(--radius);
     max-width: 100%;    
+}
+
+.pollution_info:hover {
+    cursor: pointer;
+    transform: var(--btn-scale);
+}
+/* Pollution Info Expanded */
+
+#pollutant_expanded {
+    display: none;
+    position: absolute;
+    backdrop-filter: blur(6px);
+    background-color: rgba(157, 157, 157, 0.144);
+    border-radius: var(--radius);
+    padding: calc(var(--padding)*3);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.pol_expanded_head {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: calc(var(--padding)*2);
+    border-radius: var(--radius);
+}
+
+#close_expanded_pol:hover {
+    cursor: pointer;
+    transform: scale(var(--btn-scale));
 }
 
 #pm2_5box, #pm10box, #ozonebox, #cmbox, #sdbox, #ndbox {

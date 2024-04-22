@@ -157,15 +157,31 @@ const scrollPollutant = (countId, infoBoxId) => {
   var listItem = document.getElementById(countId);
   
     listItem.addEventListener('click', function(){
-      console.log('clicked');
       targetBox.scrollIntoView({ behavior: 'smooth' });
-
       targetBox.classList.add('box_highlight');
+
       setTimeout(function() {
         targetBox.classList.remove('box_highlight');
       }, 1000);
     });
 }
+
+
+// ------- Expand to pollution info on click ------- 
+// const expandPollutant = (infoBoxId, pollutant_expanded) => {
+document.getElementById('pm2_5box').onclick = () => {
+  var pollutantExpanded = document.getElementById('pollutant_expanded');
+  if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
+    pollutantExpanded.style.display = 'block';
+  } else {
+    pollutantExpanded.style.display = 'none';
+  }
+  document.getElementById('close_expanded_pol').onclick = () => {
+    pollutantExpanded.style.display = 'none';
+  };
+};
+  
+
 
 // ======== AQI FUNCTIONS =========
 // ------- AQI Page Styling function ------- 
