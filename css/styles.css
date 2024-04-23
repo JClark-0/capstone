@@ -24,7 +24,8 @@
 
     /* Buttons  */
     --btn-radius: 40px;
-    --btn-color: rgb(243, 196, 57);
+    --btn-color: rgb(46, 182, 213);
+    /* rgb(243, 196, 57); */
     --inactive-btn-color: white; 
     --btn-scale: scale(1.02);
 
@@ -221,7 +222,9 @@ sub {
 
 .aqi_box {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
+    align-items: center;
     position: absolute; 
     right: 0;
     bottom: 0;
@@ -257,10 +260,14 @@ sub {
 }
 
 #aqi {
-    font-family: var(--display-font);
-    font-size: var(--display-size);
-    font-weight: 500;
-    text-align: right;
+    /* font-family: var(--display-font); */
+    /* font-size: var(--display-size); */
+    /* font-weight: 500; */
+    /* text-align: right; */
+    background-color: var(--card-bg);
+    padding: calc(var(--padding)*2);
+    border-radius: var(--radius) 0 0 var(--radius);
+    text-align: center;
 }
 
 .aqi_details {
@@ -301,10 +308,9 @@ sub {
 }
 
 #condition {
-    font-size: var(--base-size);
-    background: black;
-    color: var(--secondary-font-color);
-    border-radius: var(--radius);
+    background: var(--btn-color);
+    /* color: var(--secondary-font-color); */
+    border-radius: 0 var(--radius) var(--radius) 0;
     padding: calc(var(--padding)*2);
     text-align: center;
 }
@@ -441,9 +447,10 @@ sub {
 #sdbox.box_highlight,
 #ndbox.box_highlight
   {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: scale(1.03);
-    background-color: rgba(246, 246, 246, 0.353);
+    background-color: rgba(246, 246, 246, 0.166);
+    font-weight: 500;
 }
 
 .pollutant_title {
@@ -529,7 +536,7 @@ sub {
     display: flex; 
     flex-direction: column;
     gap: calc(var(--padding)*4);
-    max-width: 45ch; /* create var */
+    max-width: 65ch; /* create var */
 }
 
 footer {
@@ -557,7 +564,7 @@ footer {
     }
   } 
 
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
 
     :root {
         --display-size: 48px;
@@ -597,7 +604,6 @@ footer {
     :root {
         --display-size: 58px;
         --header-size: calc(var(--base-size)*2);
-        --base-size: 17px;
         --gutters: 16px;
     }
 

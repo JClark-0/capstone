@@ -217,7 +217,8 @@ const aqiCondition = (aqi) => {
       '--cm': '#63EC9A',
       '--sd': '#9DE6F6',
       '--nd': '#CAF98D',
-      '--page-bg': '#F5F5F5'
+      '--page-bg': '#F5F5F5',
+      '--btn-color': 'rgb(46, 182, 213)'
     });
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
@@ -229,7 +230,8 @@ const aqiCondition = (aqi) => {
       '--cm': '#FF6347',
       '--sd': '#FFDAB9',
       '--nd': '#FFD700',
-      '--page-bg': '#f7f3e8'
+      '--page-bg': '#f7f3e8',
+      '--btn-color': 'rgb(243, 196, 57)'
       // '--pm2_5': '#FFD700',
       // '--pm10': '#FFA500',
       // '--ozone': '#FF6347',
