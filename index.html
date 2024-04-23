@@ -35,13 +35,14 @@
 		<header>
 			<h1 class="timezone_header">Today in<br><span id="locationId"></span></h1>
 			<!-- <h1 id="locationId">test</h1> -->
-		</header>
-		<main>
 			<div id="loader">
 				<h1>Hold Your Breath</h1>
 				<p>This site uses your location, make sure it has been allowed.</p>
 				<p>DATA LOADING...</p>
 			</div>
+		</header>
+		<main>
+
 			<div class="pollutant_view">
 				<div class="pollutant_expanded" id="pm2_5Expanded">
 					<div class="pol_expanded_format">
@@ -65,6 +66,22 @@
 						<h3>PM<sub>10</sub> Particles</h3>
 						<img src='assets/icons/exit.svg' class="line_icon close_expanded_pol">
 					</div>	
+				</div>
+				<div class="pollutant_expanded" id="ozoneExpanded">
+					<div class="pol_expanded_head">
+						<h3>Ozone</h3>
+						<img src='assets/icons/exit.svg' class="line_icon close_expanded_pol">
+					</div>	
+					<div class="pol_expanded_info">
+						<div>
+							<h3>Source:</h3>
+							<p>Smoke and exhaust fumes. High levels most likely to happen in enclosed spaces inside. </p> 
+						</div>
+						<div>
+							<h3>Health:</h3>
+							<p>High levels of carbon monoxide can cause ‘flu-like’ symptoms, including: headaches, tiredness, dizziness, nausea.</p>
+						</div>	
+					</div>
 				</div>
 
 				<div>

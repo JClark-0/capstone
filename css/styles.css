@@ -483,8 +483,9 @@ sub {
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: var(--btn-color);
-    padding: calc(var(--padding)*2);
+    background-color: white;
+    font-weight: 700;
+    padding: calc(var(--padding)*3);
     margin-right: var(--gutters);
     margin-bottom: var(--gutters);
     border-radius: var(--radius);
@@ -492,6 +493,10 @@ sub {
     z-index: 1;
     opacity: 0%;
     transition: 1s; 
+}
+
+.top:hover {
+    background-color: var(--btn-color);
 }
 
 .top.scrolled {
@@ -518,7 +523,7 @@ sub {
 .about_text {
     display: flex; 
     flex-direction: column;
-    gap: calc(var(--padding)*2);
+    gap: calc(var(--padding)*4);
     max-width: 45ch; /* create var */
 }
 
@@ -554,11 +559,7 @@ footer {
         --header-size: calc(var(--base-size)*1.8);
         --gutters: 14px;
     }
-
-    /* .nav_bar {
-        margin-bottom: calc(var(--gutters)*2);
-    } */
-
+    
     main {
         flex-direction: row;
         align-items: flex-start;
