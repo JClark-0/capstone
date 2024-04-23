@@ -191,8 +191,6 @@ const expandPollutant = (infoBoxId, expandedId) => {
     //   pollutantExpanded.innerHTML ='hello pm10'
     // }
 
-    
-
 
 // ======== AQI FUNCTIONS =========
 // ------- AQI Page Styling function ------- 
@@ -205,11 +203,13 @@ const aqiConditionStyles = (properties) => {
 const aqiCondition = (aqi) => {
   let conditionText = '';
   let adviceText = '';
-  // let warningIcon = 'assets/icons/warning.svg';
+  let warningIcon = '';
+ 
 
   if (aqi <= 50){
     conditionText = 'Good';
     adviceText = 'It’s a great day to be active outside. Open your windows to bring clean, fresh air indoors.';
+    warningIcon = 'none';
     aqiConditionStyles({
       '--pm2_5': '#B0F35C',
       '--pm10': '#1CB659',
@@ -225,11 +225,18 @@ const aqiCondition = (aqi) => {
     aqiConditionStyles({
       '--pm2_5': '#FFD700',
       '--pm10': '#FFA500',
-      '--ozone': '#FF6347',
-      '--cm': '#4CAF50',
-      '--sd': '#008080',
-      '--nd': '#4682B4',
+      '--ozone': '#FF8C00',
+      '--cm': '#FF6347',
+      '--sd': '#FFDAB9',
+      '--nd': '#FFD700',
       '--page-bg': '#f7f3e8'
+      // '--pm2_5': '#FFD700',
+      // '--pm10': '#FFA500',
+      // '--ozone': '#FF6347',
+      // '--cm': '#FF6347',
+      // '--sd': '#008080',
+      // '--nd': '#4682B4',
+      // '--page-bg': '#f7f3e8'
     });
   } else if (aqi >= 101 && aqi <= 150) {
     conditionText = 'Unhealthy (USG*)';
@@ -272,8 +279,8 @@ const aqiCondition = (aqi) => {
     adviceText = 'Warning: Everyone should avoid all activity outdoors today and keep windows closed.';
   }
   document.getElementById('condition').textContent = conditionText;
-  document.getElementById('aqi_advice').innerHTML = adviceText
-  // document.querySelector('.condition_icon').style.
+  document.getElementById('aqi_advice').innerHTML = adviceText;
+  document.querySelector('.condition_icon').style.setProperty('display', warningIcon);
 };
 
 
@@ -320,18 +327,6 @@ expandButton.addEventListener('click', () => {
   aqiDetails.classList.remove('minimized');
   aqiDetails.classList.add('expanded');
 });
-
-
-
-
-// document.documentElement.onload = function(){
-//   document.getElementById("loader").style.display = "block";
-// };
-
-// window.onload = function(){
-//   document.getElementById("loader").style.display = "none";
-// };
-
 
 
     // document.documentElement.style.setProperty('--pm2_5', '#187D40')
