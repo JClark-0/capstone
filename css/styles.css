@@ -200,6 +200,11 @@ h3 {
     font-weight: 500;
 }
 
+sub {
+    vertical-align: sub; 
+    font-size: small;  
+}
+
 .data_list {
     background-color: var(--card-bg); 
     border-radius: var(--radius) 0 0 var(--radius);
@@ -382,17 +387,16 @@ h3 {
     z-index: 2;
 }
 
-.pol_expanded_head {
+.pol_expanded_format {
     display: flex;
     justify-content: space-between;
-    background-color: white;
     padding: calc(var(--padding)*2);
     border-radius: var(--radius);
 }
 
 .close_expanded_pol:hover {
     cursor: pointer;
-    transform: scale(var(--btn-scale));
+    transform: scale(1.1);
 }
 
 #pm2_5box, #pm10box, #ozonebox, #cmbox, #sdbox, #ndbox {
@@ -525,9 +529,9 @@ footer {
         --gutters: 14px;
     }
 
-    .nav_bar {
+    /* .nav_bar {
         margin-bottom: calc(var(--gutters)*2);
-    }
+    } */
 
     main {
         flex-direction: row;
