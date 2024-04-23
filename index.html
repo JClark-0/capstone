@@ -48,11 +48,16 @@
 						<h3>PM<sub>2.5</sub> Particles</h3>
 						<img src='assets/icons/exit.svg' class="line_icon close_expanded_pol">
 					</div>
-					<div>
-						<h3>Source:</h3>
-						<p>smoke from fires, smoke from wood heaters, car and truck exhausts, industry.</p> 
-						<h3>Health:</h3>
-						<p>People who are sensitive to air pollution might experience symptoms when PM2.5 levels are high. This includes people with heart or lung conditions. Symptoms can include: wheezing, coughing, chest tightness, difficulty breathing.</p>
+					<div class ="pol_expanded_info">	
+						<div>
+							<h3>Source:</h3>
+							<p>Smoke from fires, smoke from wood heaters, car and truck exhausts, combustion emissions.</p> 
+						</div>
+						<div>
+							<h3>Health:</h3>
+							<p>People who are sensitive to air pollution might experience symptoms when PM2.5 levels are high. This includes people with heart or lung conditions. Symptoms can include: wheezing, coughing, chest tightness, difficulty breathing.</p>
+						</div>
+						
 					</div>	
 				</div>
 				<div class="pollutant_expanded" id="pm10Expanded">
@@ -78,13 +83,16 @@
 						<button id="nxt_btn" class="sub_btn">Next</button>
 					</div>
 					<div class="aqi_box add_blur">
-						<h2 id="aqi"></h2>
+						<h2 id="aqi"></h2>	
 						<p id="condition"></p>		
 					</div>
 
 					<div class="aqi_details expanded" >
 						<div class="expanded">
-							<p id="aqi_advice"></p>
+							<div class="logo_placement ">
+								<img src="assets/icons/warning.svg" class="condition_icon" alt="warning icon">
+								<p id="aqi_advice"></p>
+							</div>	
 							<button  class="btn" id="minimize_button"><p>Close</p></button>
 						</div>
 						<div class="minimized">
@@ -102,7 +110,7 @@
 
 			<ol class="pollution_list">
 				<li id="pm2_5box" class="pollution_info">
-					<p>Very small particles usually found in smoke.</p>
+					<p>Airborne particulate matter usually found in smoke.</p>
 					<div class="pollutant_title">
 						<div class="pollutant_tag" >
 							<div class="icon pm2_5"></div>
