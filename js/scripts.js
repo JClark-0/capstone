@@ -93,7 +93,7 @@ const renderOnScreen = (data) => {
     createPollutant( data, pollutant.name, pollutant.countId, pollutant.styleClass);
     showData(data, pollutant.name, pollutant.statId, pollutant.unitId);
     scrollPollutant(pollutant.countId, pollutant.infoBoxId); 
-    expandPollutant(pollutant.name, pollutant.infoBoxId, pollutant.expandedId);
+    expandPollutant(pollutant.infoBoxId, pollutant.expandedId);
   });
   // ------- AQI ------- 
   let aqi = data.current.us_aqi;
@@ -169,16 +169,21 @@ const scrollPollutant = (countId, infoBoxId) => {
 
 
 // ------- Expand to pollution info on click ------- 
-const expandPollutant = (name, infoBoxId, expandedId) => {
+const expandPollutant = (infoBoxId, expandedId) => {
   document.getElementById(infoBoxId).onclick = () => {
     var pollutantExpanded = document.getElementById(expandedId);
+
     if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
       pollutantExpanded.style.display = 'block';
     } else {
       pollutantExpanded.style.display = 'none';
     }
-    document.getElementsByClassName('close_expanded_pol').onclick = () => {
+    document.querySelector('.close_expanded_pol').onclick = () => {
       pollutantExpanded.style.display = 'none';
+
+    };
+  };
+};
 
     // if (name === 'pm2_5'){
     //   pollutantExpanded.innerHTML ='hello pm25';
@@ -186,9 +191,6 @@ const expandPollutant = (name, infoBoxId, expandedId) => {
     //   pollutantExpanded.innerHTML ='hello pm10'
     // }
 
-    };
-  };
-};
     
 
 
