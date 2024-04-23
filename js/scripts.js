@@ -205,10 +205,11 @@ const aqiConditionStyles = (properties) => {
 const aqiCondition = (aqi) => {
   let conditionText = '';
   let adviceText = '';
+  // let warningIcon = 'assets/icons/warning.svg';
 
   if (aqi <= 50){
     conditionText = 'Good';
-    adviceText = 'It’s a great day to be active outside.';
+    adviceText = 'It’s a great day to be active outside. Open your windows to bring clean, fresh air indoors.';
     aqiConditionStyles({
       '--pm2_5': '#B0F35C',
       '--pm10': '#1CB659',
@@ -220,7 +221,7 @@ const aqiCondition = (aqi) => {
     });
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
-    adviceText = 'It’s good day to be active outside. <a class="btn" href="about.html">Sensitive individuals</a> may experience increased symptoms.';
+    adviceText = '<a class="btn" href="about.html">Sensitive groups</a> should reduce outdoor activity today.';
     aqiConditionStyles({
       '--pm2_5': '#FFD700',
       '--pm10': '#FFA500',
@@ -231,11 +232,29 @@ const aqiCondition = (aqi) => {
       '--page-bg': '#f7f3e8'
     });
   } else if (aqi >= 101 && aqi <= 150) {
-    conditionText = 'Unhealthy(senstive groups)';
-    adviceText = 'It’s an ok day to be active outside today. Sensitive individuals should limit prolonged outdoor activities';
+    conditionText = 'Unhealthy (USG*)';
+    aqiConditionStyles({
+      '--pm2_5': '#FF6347',
+      '--pm10': '#FFA500',
+      '--ozone': '#FFD700',
+      '--cm': '#FF4500',
+      '--sd': '#8B0000',
+      '--nd': '#800000',
+      '--page-bg': '#FFF3E8'
+    });
+    adviceText = 'Everyone should limit outdoor activities today. <a class="btn" href="about.html">Sensitive groups</a> should wear a mask outdoors. ';
   } else if (aqi >= 151 && aqi <= 200) {
     conditionText = 'Unhealthy';
-    adviceText = 'Everyone should limit prolonged outdoor activities today.';
+    aqiConditionStyles({
+      '--pm2_5': '#FF6347',
+      '--pm10': '#FFA500',
+      '--ozone': '#FFD700',
+      '--cm': '#FF4500',
+      '--sd': '#8B0000',
+      '--nd': '#800000',
+      '--page-bg': '#FFF3E8'
+    });
+    adviceText = 'Everyone should avoid prolonged outdoor activities today. Close your windows and wear a mask outdoors.';
     aqiConditionStyles({
       '--pm2_5': '#FF6347',
       '--pm10': '#FFA500',
@@ -247,13 +266,14 @@ const aqiCondition = (aqi) => {
     });
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
-    adviceText = 'Everyone should consider moving activities indoors today.';
+    adviceText = 'Everyone should avoid outdoor activities today. Close your windows and wear a mask outdoors.';
   } else if (aqi >= 301 && aqi <= 500) {
     conditionText = 'Hazardous';
-    adviceText = 'Warning: Everyone should avoid all activity outdoors today.';
+    adviceText = 'Warning: Everyone should avoid all activity outdoors today and keep windows closed.';
   }
   document.getElementById('condition').textContent = conditionText;
   document.getElementById('aqi_advice').innerHTML = adviceText
+  // document.querySelector('.condition_icon').style.
 };
 
 
