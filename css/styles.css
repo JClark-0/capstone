@@ -159,7 +159,7 @@ button {
 }
 
 .line_icon {
-    width: var(--icon-size); /* create var */
+    width: var(--icon-size); 
     vertical-align: middle;
 }
 
@@ -375,6 +375,9 @@ sub {
 
 .pollutant:hover {
     cursor: pointer;
+    opacity: 50%;
+    mix-blend-mode:multiply;
+    transition: 1s;
 }
 
 .pollution_list {
@@ -453,7 +456,6 @@ sub {
     transition: all 0.1s ease-in-out;
     transform: scale(1.03);
     background-color: rgba(246, 246, 246, 0.166);
-    font-weight: 500;
 }
 
 .pollutant_title {
