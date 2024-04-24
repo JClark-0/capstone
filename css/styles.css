@@ -101,6 +101,15 @@ main {
     padding-right: var(--padding);
 }
 
+.sg {
+    text-decoration: underline;
+}
+
+.sg:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
 .btn:not(.active):hover {
     text-decoration: underline;
     cursor: pointer;

@@ -94,6 +94,7 @@ const renderOnScreen = (data) => {
     showData(data, pollutant.name, pollutant.statId, pollutant.unitId);
     scrollPollutant(pollutant.countId, pollutant.infoBoxId); 
     expandPollutant(pollutant.infoBoxId, pollutant.expandedId);
+
   });
   // ------- AQI ------- 
   let aqi = data.current.us_aqi;
@@ -196,6 +197,8 @@ const expandPollutant = (infoBoxId, expandedId) => {
   };
 };
 
+
+
     // if (name === 'pm2_5'){
     //   pollutantExpanded.innerHTML ='hello pm25';
     // } else if (name === 'pm10') {
@@ -215,7 +218,6 @@ const aqiCondition = (aqi) => {
   let conditionText = '';
   let adviceText = '';
   let warningIcon = '';
- 
 
   if (aqi <= 50){
     conditionText = 'Good';
@@ -229,11 +231,11 @@ const aqiCondition = (aqi) => {
       '--sd': '#9DE6F6',
       '--nd': '#CAF98D',
       '--page-bg': '#F5F5F5',
-      '--btn-color': 'rgb(46, 182, 213)'
+      '--btn-color': '#CAF98D'
     });
   } else if ( aqi >= 51 && aqi <= 100) {
     conditionText = 'Moderate';
-    adviceText = '<a class="btn" href="about.html">Sensitive groups</a> should reduce outdoor activity today.';
+    adviceText = '<a id="sgId" class="sg">Sensitive groups</a> should reduce outdoor activity today.';
     aqiConditionStyles({
       '--pm2_5': '#FFD700',
       '--pm10': '#FFA500',
@@ -243,13 +245,6 @@ const aqiCondition = (aqi) => {
       '--nd': '#FFD700',
       '--page-bg': '#f7f3e8',
       '--btn-color': 'rgb(243, 196, 57)'
-      // '--pm2_5': '#FFD700',
-      // '--pm10': '#FFA500',
-      // '--ozone': '#FF6347',
-      // '--cm': '#FF6347',
-      // '--sd': '#008080',
-      // '--nd': '#4682B4',
-      // '--page-bg': '#f7f3e8'
     });
   } else if (aqi >= 101 && aqi <= 150) {
     conditionText = 'Unhealthy (USG*)';
@@ -260,9 +255,10 @@ const aqiCondition = (aqi) => {
       '--cm': '#FF4500',
       '--sd': '#8B0000',
       '--nd': '#800000',
-      '--page-bg': '#FFF3E8'
+      '--page-bg': '#FFF3E8',
+      '--btn-color': 'FF6347'
     });
-    adviceText = 'Everyone should limit outdoor activities today. <a class="btn" href="about.html">Sensitive groups</a> should wear a mask outdoors. ';
+    adviceText = 'Everyone should limit outdoor activities today. <a id="sgId" class="sg">Sensitive groups</a> should wear a mask outdoors. ';
   } else if (aqi >= 151 && aqi <= 200) {
     conditionText = 'Unhealthy';
     aqiConditionStyles({
@@ -272,7 +268,8 @@ const aqiCondition = (aqi) => {
       '--cm': '#FF4500',
       '--sd': '#8B0000',
       '--nd': '#800000',
-      '--page-bg': '#FFF3E8'
+      '--page-bg': '#FFF3E8',
+      '--btn-color': 'FF6347'
     });
     adviceText = 'Everyone should avoid prolonged outdoor activities today. Close your windows and wear a mask outdoors.';
     aqiConditionStyles({
@@ -282,19 +279,61 @@ const aqiCondition = (aqi) => {
       '--cm': '#FF4500',
       '--sd': '#8B0000',
       '--nd': '#800000',
-      '--page-bg': '#FFF3E8'
+      '--page-bg': '#FFF3E8',
+      '--btn-color': 'FF6347'
     });
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
     adviceText = 'Everyone should avoid outdoor activities today. Close your windows and wear a mask outdoors.';
+    aqiConditionStyles({
+      '--pm2_5': '#FF6347',
+      '--pm10': '#FFA500',
+      '--ozone': '#FFD700',
+      '--cm': '#FF4500',
+      '--sd': '#8B0000',
+      '--nd': '#800000',
+      '--page-bg': '#FFF3E8',
+      '--btn-color': 'FF6347'
+    });
   } else if (aqi >= 301 && aqi <= 500) {
     conditionText = 'Hazardous';
     adviceText = 'Warning: Everyone should avoid all activity outdoors today and keep windows closed.';
+    aqiConditionStyles({
+      '--pm2_5': '#FF6347',
+      '--pm10': '#FFA500',
+      '--ozone': '#FFD700',
+      '--cm': '#FF4500',
+      '--sd': '#8B0000',
+      '--nd': '#800000',
+      '--page-bg': '#FFF3E8',
+      '--btn-color': 'FF6347'
+    });
   }
   document.getElementById('condition').textContent = conditionText;
   document.getElementById('aqi_advice').innerHTML = adviceText;
   document.querySelector('.condition_icon').style.setProperty('display', warningIcon);
+
+  document.getElementById('sgId').onclick = () => {
+    const expandedElement = document.getElementById('sgExpanded');
+  
+    if (expandedElement.style.display === 'none') { 
+    document.querySelectorAll('.expanded_element').forEach(element => {
+      element.style.display = 'none';
+    });
+    expandedElement.style.display = 'block';
+    } else {
+      expandedElement.style.display = 'none';
+    }
+    const closePopup = document.querySelectorAll('.close_expanded_pol');
+    closePopup.forEach(icon => { 
+      icon.onclick = () => {
+        sgExpanded.style.display = 'none';
+      }
+    });
+  }
+  
 };
+
 
 
 // ======== PAGE CONTROL =========
