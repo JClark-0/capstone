@@ -170,17 +170,25 @@ const scrollPollutant = (countId, infoBoxId) => {
 
 // ------- Expand to pollution info on click ------- 
 const expandPollutant = (infoBoxId, expandedId) => {
+
   document.getElementById(infoBoxId).onclick = () => {
-    var pollutantExpanded = document.getElementById(expandedId);
 
-    if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') {
-      pollutantExpanded.style.display = 'block';
-    } else {
-      pollutantExpanded.style.display = 'none';
-    }
-    document.querySelector('.close_expanded_pol').onclick = () => {
-      pollutantExpanded.style.display = 'none';
+    const pollutantExpanded = document.getElementById(expandedId);
+    const infoBox = document.getElementById(infoBoxId)
+    const closePopup = document.querySelectorAll('.close_expanded_pol');
 
+    infoBox.onclick = () => {
+      if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') { 
+        pollutantExpanded.style.display = 'block';
+      } else {
+        pollutantExpanded.style.display = 'none';
+      }
+
+      closePopup.forEach(img => { 
+        img.onclick = () => {
+          pollutantExpanded.style.display = 'none';
+        }
+      });
     };
   };
 };
