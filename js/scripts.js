@@ -34,7 +34,7 @@ function fetchAndSave(lat,lng){
     data.realLongitude = lng;
     database.push(data)
   })
-}
+};
 
 
 // --- Location added to database ready to render ---
@@ -52,7 +52,7 @@ function fetchData(lat,lng) {
   .catch((error) => {
     console.error('Error', error);
   });
-}
+};
 
 
 // ------- Show Location Name ------- 
@@ -101,7 +101,7 @@ const renderOnScreen = (data) => {
   let aqi_num = document.getElementById('aqi');
   aqi_num.innerHTML = aqi +' AQI';
   aqiCondition(aqi);
-}
+};
 
 
 
@@ -313,25 +313,28 @@ const aqiCondition = (aqi) => {
   document.getElementById('aqi_advice').innerHTML = adviceText;
   document.querySelector('.condition_icon').style.setProperty('display', warningIcon);
 
-  document.getElementById('sgId').onclick = () => {
-    const expandedElement = document.getElementById('sgExpanded');
-  
-    if (expandedElement.style.display === 'none') { 
-    document.querySelectorAll('.expanded_element').forEach(element => {
-      element.style.display = 'none';
-    });
-    expandedElement.style.display = 'block';
-    } else {
-      expandedElement.style.display = 'none';
-    }
-    const closePopup = document.querySelectorAll('.close_expanded_pol');
-    closePopup.forEach(icon => { 
-      icon.onclick = () => {
-        sgExpanded.style.display = 'none';
+  const sgIdCheck = document.getElementById('sgId');
+  if (sgIdCheck) {
+
+    sgIdCheck.onclick = () => {
+      const expandedElement = document.getElementById('sgExpanded');
+    
+      if (expandedElement.style.display === 'none') { 
+      document.querySelectorAll('.expanded_element').forEach(element => {
+        element.style.display = 'none';
+      });
+      expandedElement.style.display = 'block';
+      } else {
+        expandedElement.style.display = 'none';
       }
-    });
+      const closePopup = document.querySelectorAll('.close_expanded_pol');
+      closePopup.forEach(icon => { 
+        icon.onclick = () => {
+          sgExpanded.style.display = 'none';
+        };
+      })
+    };
   }
-  
 };
 
 
@@ -354,14 +357,14 @@ nextLocation.onclick = () => {
   }
   console.log(currentLocationIndex);
   renderOnScreen(database[currentLocationIndex]);
-}
+};
 
 currentLocation.onclick = () => {
   currentLocationIndex = 0;
   renderOnScreen(database[currentLocationIndex]);
   currentLocation.classList.add("control_btn_active");
   nextLocation.classList.remove("control_btn_active");
-}
+};
 
 
 
