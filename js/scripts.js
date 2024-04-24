@@ -176,16 +176,23 @@ const expandPollutant = (infoBoxId, expandedId) => {
     const pollutantExpanded = document.getElementById(expandedId);
     const infoBox = document.getElementById(infoBoxId)
     const closePopup = document.querySelectorAll('.close_expanded_pol');
+    // const resetPopup = () => {
+
+    // }
 
     infoBox.onclick = () => {
-      if (pollutantExpanded.style.display === 'none' || pollutantExpanded.style.display === '') { 
+      if (pollutantExpanded.style.display === 'none' ) { 
+        // resetPopup();
+        document.querySelectorAll('.pollutant_expanded').forEach(element => {
+          element.style.display='none';
+        })
         pollutantExpanded.style.display = 'block';
       } else {
         pollutantExpanded.style.display = 'none';
       }
 
-      closePopup.forEach(img => { 
-        img.onclick = () => {
+      closePopup.forEach(icon => { 
+        icon.onclick = () => {
           pollutantExpanded.style.display = 'none';
         }
       });
