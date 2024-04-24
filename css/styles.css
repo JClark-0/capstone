@@ -359,7 +359,7 @@ sub {
 }
 
 .pollutant_view {
-    height: calc(100dvh - 330px); /* create var */
+    height: calc(100dvh - 320px); /* create var */
     overflow: hidden;
     position: relative;
     flex-grow: 1;
@@ -563,8 +563,22 @@ footer {
       transform: translate(50vw, 50vh); 
     }
   } 
+  @media (min-width: 600px) {
+    
+    :root {
+        --display-size: 38px;
+        --header-size: calc(var(--base-size)*1.2);
+        /* --base-size: 15px; */
+        /* --gutters: 14px; */
+    }
 
-  @media (min-width: 800px) {
+    #loc_btn:after {
+        content: 'Current Location';
+    }
+
+  }
+
+  @media (min-width: 920px) {
 
     :root {
         --display-size: 48px;
