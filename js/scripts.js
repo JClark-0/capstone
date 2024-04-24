@@ -254,23 +254,13 @@ const aqiCondition = (aqi) => {
       '--ozone': '#FFD700',
       '--cm': '#FF4500',
       '--sd': '#8B0000',
-      '--nd': '#800000',
+      '--nd': '#bd3535',
       '--page-bg': '#FFF3E8',
-      '--btn-color': 'FF6347'
+      '--btn-color': '#f7816c'
     });
     adviceText = 'Everyone should limit outdoor activities today. <a id="sgId" class="sg">Sensitive groups</a> should wear a mask outdoors. ';
   } else if (aqi >= 151 && aqi <= 200) {
     conditionText = 'Unhealthy';
-    aqiConditionStyles({
-      '--pm2_5': '#FF6347',
-      '--pm10': '#FFA500',
-      '--ozone': '#FFD700',
-      '--cm': '#FF4500',
-      '--sd': '#8B0000',
-      '--nd': '#800000',
-      '--page-bg': '#FFF3E8',
-      '--btn-color': 'FF6347'
-    });
     adviceText = 'Everyone should avoid prolonged outdoor activities today. Close your windows and wear a mask outdoors.';
     aqiConditionStyles({
       '--pm2_5': '#FF6347',
@@ -278,9 +268,9 @@ const aqiCondition = (aqi) => {
       '--ozone': '#FFD700',
       '--cm': '#FF4500',
       '--sd': '#8B0000',
-      '--nd': '#800000',
+      '--nd': '#bd3535',
       '--page-bg': '#FFF3E8',
-      '--btn-color': 'FF6347'
+      '--btn-color': '#f76c6c'
     });
   } else if (aqi >= 201 && aqi <= 300) {
     conditionText = 'Very Unhealthy';
@@ -293,7 +283,7 @@ const aqiCondition = (aqi) => {
       '--sd': '#8B0000',
       '--nd': '#800000',
       '--page-bg': '#FFF3E8',
-      '--btn-color': 'FF6347'
+      '--btn-color': 'ff5050'
     });
   } else if (aqi >= 301 && aqi <= 500) {
     conditionText = 'Hazardous';
@@ -306,7 +296,7 @@ const aqiCondition = (aqi) => {
       '--sd': '#8B0000',
       '--nd': '#800000',
       '--page-bg': '#FFF3E8',
-      '--btn-color': 'FF6347'
+      '--btn-color': 'ff5050'
     });
   }
   document.getElementById('condition').textContent = conditionText;
